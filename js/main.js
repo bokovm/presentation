@@ -1,6 +1,6 @@
 // main.js — Инициализация, переключение слайдов, базовые интерактивы
 
-// Теперь функции навигации доступны глобально
+// Глобальные функции навигации по слайдам
 window.showSlide = function(idx) {
   const slides = Array.from(document.querySelectorAll('.slide'));
   if (!slides.length) return;
@@ -10,6 +10,16 @@ window.showSlide = function(idx) {
   window.currentSlide = idx;
   updateProgressBar(idx, slides.length);
   updateQuickNav(idx);
+
+  // После переключения слайда, если есть графики — отрисовать их заново
+  // (иначе canvas может быть скрыт при первой инициализации)
+  if (slides[idx].querySelector('#beforeAfterChart') && typeof window.drawResultsChart === 'function') {
+    window.drawResultsChart();
+  }
+  if (slides[idx].querySelector('#roiBarChart') && typeof window.drawRoiChart === 'function') {
+    window.drawRoiChart();
+  }
+
   window.scrollTo(0, 0);
 };
 window.nextSlide = function() {
@@ -116,4 +126,8 @@ window.initSlides = function() {
   if (thanksContacts) {
     setTimeout(() => thanksContacts.classList.add('fade-in'), 400);
   }
+
+  // После загрузки всех слайдов — отрисовать графики, если нужно (актуально для первого слайда с графиком)
+  if (typeof window.drawResultsChart === 'function') window.drawResultsChart();
+  if (typeof window.drawRoiChart === 'function') window.drawRoiChart();
 };
