@@ -1,42 +1,57 @@
-<!-- Экономика вопроса: ROI автоматизации -->
-<section class="slide slide-roi">
+<section class="slide slide-solutions">
   <div class="slide-content">
-    <h2>ROI АВТОМАТИЗАЦИИ</h2>
-    <div class="roi-main-indicator">
-      <img src="../assets/icons/roi.png" alt="ROI" />
-      <b>ROI = 252% (для ООО)</b>
-    </div>
-    <div class="roi-bars">
-      <canvas id="roiBarChart" width="540" height="220"></canvas>
-    </div>
-    <div class="roi-info">
-      <ul>
-        <li>ИП / «Моё Дело»: <b>2.3 мес.</b> – <span>216 тыс.р./год</span></li>
-        <li>ООО (услуги) / «Контур»: <b>3–6 мес.</b> – <span>150–300 тыс.р./год</span></li>
-        <li>ООО (торговля) / «1С»: <b>6.8 мес.</b> – <span>200–500 тыс.р./год</span></li>
-        <li>⬇️100% штрафов у 95%, ⬇️15–28% потерь</li>
-      </ul>
-      <button class="btn-accent" id="openRoiCalc">Рассчитать свой ROI</button>
-    </div>
-    <!-- Модальное окно калькулятора ROI -->
-    <div class="modal" id="roiModal">
-      <div class="modal-content">
-        <span class="close" id="closeRoiModal">&times;</span>
-        <h3>Калькулятор ROI</h3>
-        <form id="roiForm">
-          <label>Тип бизнеса:
-            <select name="type">
-              <option value="ip">ИП</option>
-              <option value="ooo-uslugi">ООО (услуги)</option>
-              <option value="ooo-torgovlya">ООО (торговля)</option>
-            </select>
-          </label>
-          <label>Годовой оборот (₽): <input type="number" name="turnover" min="100000" required></label>
-          <label>Затраты на бухг. в мес. (₽): <input type="number" name="cost" min="0" required></label>
-          <button type="submit" class="btn-accent">Рассчитать</button>
-        </form>
-        <div id="roiResult"></div>
+    <h2>ТОП-3 РЕШЕНИЯ ДЛЯ РФ (2023)</h2>
+    <div class="software-tabs">
+      <div class="tab-headers">
+        <button class="tab-btn active" data-tab="1c">1С:Бухгалтерия 8</button>
+        <button class="tab-btn" data-tab="kontur">Контур.Бухгалтерия</button>
+        <button class="tab-btn" data-tab="moedelo">Моё Дело</button>
       </div>
+      <div class="tab-content active" id="tab-1c">
+        <div class="sw-card">
+          <img src="assets/logos/1c.svg" alt="1С" />
+          <ul>
+            <li><b>Мощно, интеграция, локально</b></li>
+            <li>Для: Торговля, Производство</li>
+            <li>Цена: <b>от 5 000 руб./мес.</b></li>
+            <li>✔️ Поддержка налогов, склад</li>
+            <li>❌ Меньше облачных функций</li>
+          </ul>
+          <div class="case">Кейс: Строительная фирма –90% ошибок НДС</div>
+        </div>
+      </div>
+      <div class="tab-content" id="tab-kontur">
+        <div class="sw-card">
+          <img src="assets/logos/kontur.svg" alt="Контур" />
+          <ul>
+            <li><b>Облако, отчеты в ФНС, банки</b></li>
+            <li>Для: Услуги, ИП/ООО (до 30 чел)</li>
+            <li>Цена: <b>от 3 300 руб./мес.</b></li>
+            <li>✔️ Мобильность, отчетность онлайн</li>
+            <li>❌ Меньше возможностей для склада</li>
+          </ul>
+          <div class="case">Кейс: Кафе –15 часов/мес.</div>
+        </div>
+      </div>
+      <div class="tab-content" id="tab-moedelo">
+        <div class="sw-card">
+          <img src="assets/logos/moedelo.svg" alt="Моё Дело" />
+          <ul>
+            <li><b>Супер-просто, дешево</b></li>
+            <li>Для: ИП (УСН), фриланс</li>
+            <li>Цена: <b>от 833 руб./мес.</b></li>
+            <li>✔️ Мобильность, простота</li>
+            <li>❌ Нет НДС</li>
+          </ul>
+          <div class="case">Кейс: ИП-репетитор –0 штрафов</div>
+        </div>
+      </div>
+    </div>
+    <div class="sw-filter">
+      <label><input type="checkbox" id="filter-nds" /> Нужен НДС?</label>
+      <label><input type="checkbox" id="filter-warehouse" /> Нужен склад?</label>
+      <label><input type="checkbox" id="filter-mobile" /> Важна мобильность?</label>
+      <label><input type="checkbox" id="filter-budget" /> Бюджет до 3000р?</label>
     </div>
   </div>
 </section>
