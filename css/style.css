@@ -25,6 +25,16 @@ body {
     height: 100vh;
 }
 
+:root {
+    --primary: #2A5CAA;
+    --primary-dark: #1E3A8A;
+    --accent: #10B981;
+    --accent-dark: #059669;
+    --warning: #F97316;
+    --light-gray: #F3F4F6;
+    --dark-gray: #1F2937;
+}
+
 /* Контейнер слайдов */
 .slides-container {
     position: relative;

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/slides.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Контейнер прогресса -->
@@ -15,8 +16,12 @@
     </div>
     
     <!-- Навигационные кнопки -->
-    <button class="nav-btn prev-btn" id="prev-btn" aria-label="Предыдущий слайд">←</button>
-    <button class="nav-btn next-btn" id="next-btn" aria-label="Следующий слайд">→</button>
+    <button class="nav-btn prev-btn" id="prev-btn" aria-label="Предыдущий слайд">
+        <svg width="24" height="24" viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+    </button>
+    <button class="nav-btn next-btn" id="next-btn" aria-label="Следующий слайд">
+        <svg width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+    </button>
     
     <!-- Кнопки быстрой навигации -->
     <div class="quick-nav">
@@ -42,7 +47,7 @@
         <!-- Слайды будут загружаться динамически -->
     </div>
 
-    <!-- Подключаем скрипты в правильном порядке -->
+    <!-- Подключаем скрипты -->
     <script src="js/navigation.js"></script>
     <script src="js/main.js"></script>
     <script src="js/calculator.js"></script>

@@ -4,11 +4,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const slideFiles = [
         'slides/01-problem.html',
         'slides/02-hypothesis.html',
-        'slides/03-goals.html',
+        'slides/03-goals.html',    // Исправленный файл
         'slides/04-methodology.html',
         'slides/05-results.html',
-        'slides/06-roi.html',
-        'slides/07-solutions.html',
+        'slides/06-roi.html',      // Контент из 07-solutions.html
+        'slides/07-solutions.html', // Новый файл для сравнения ПО
         'slides/08-trends.html',
         'slides/09-checklist.html',
         'slides/10-implementation.html',

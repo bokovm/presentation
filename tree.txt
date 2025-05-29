@@ -1,0 +1,33 @@
+project-root/
+├── index.html                  # Главная страница (титульный слайд)
+├── css/
+│   ├── style.css               # Основные стили
+│   ├── animations.css          # Специфические анимации
+│   └── slides.css              # Стили отдельных слайдов
+├── js/
+│   ├── main.js                 # Основная логика
+│   ├── navigation.js           # Управление навигацией
+│   ├── calculator.js           # ROI-калькулятор
+│   └── comparison.js           # Интерактивное сравнение ПО
+├── slides/                     # Папка со слайдами
+│   ├── 01-problem.html         # Проблема малого бизнеса
+│   ├── 02-hypothesis.html      # Гипотеза исследования
+│   ├── 03-goals.html           # Цели и задачи
+│   ├── 04-methodology.html     # Методология
+│   ├── 05-results.html         # Результаты (цифры)
+│   ├── 06-roi.html             # Экономика и ROI
+│   ├── 07-solutions.html       # ТОП-3 решений
+│   ├── 08-trends.html          # Тренды 2023-2024
+│   ├── 09-checklist.html       # Чек-лист выбора ПО
+│   ├── 10-implementation.html  # Пошаговое внедрение
+│   ├── 11-risks.html           # Управление рисками
+│   ├── 12-nnov-context.html    # Нижегородский контекст
+│   ├── 13-conclusion.html      # Выводы
+│   └── 14-thanks.html          # Завершение
+├── assets/
+│   ├── icons/                  # SVG/PNG иконки
+│   ├── images/                 # Фоновые изображения
+│   └── logos/                  # Логотипы (1С, Контур и т.д.)
+└── data/                       # Данные для визуализаций
+    ├── roi-data.json           # Данные для ROI-калькулятора
+    └── software-comparison.json# Параметры сравнения ПО
