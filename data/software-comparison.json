@@ -1,0 +1,50 @@
+{
+    "software": [
+        {
+            "id": "1c",
+            "name": "1С:Бухгалтерия 8",
+            "price": 5000,
+            "taxSupport": true,
+            "inventory": true,
+            "mobile": true,
+            "reports": true,
+            "nds": true,
+            "usn": true,
+            "cloud": false,
+            "bestFor": "Торговля, Производство",
+            "strengths": ["Мощная функциональность", "Локальное хранение данных", "Интеграция с другими системами"],
+            "weaknesses": ["Высокая стоимость", "Требует обучения"]
+        },
+        {
+            "id": "kontur",
+            "name": "Контур.Бухгалтерия",
+            "price": 3300,
+            "taxSupport": true,
+            "inventory": false,
+            "mobile": true,
+            "reports": true,
+            "nds": true,
+            "usn": true,
+            "cloud": true,
+            "bestFor": "Услуги, ИП/ООО (до 30 чел)",
+            "strengths": ["Облачное решение", "Автоматическая отправка отчетов", "Простота использования"],
+            "weaknesses": ["Нет учета товаров", "Ограниченная кастомизация"]
+        },
+        {
+            "id": "moe-delo",
+            "name": "Моё Дело",
+            "price": 833,
+            "taxSupport": true,
+            "inventory": false,
+            "mobile": true,
+            "reports": true,
+            "nds": false,
+            "usn": true,
+            "cloud": true,
+            "bestFor": "ИП (УСН), фриланс",
+            "strengths": ["Самая низкая цена", "Простота освоения", "Не требует установки"],
+            "weaknesses": ["Не поддерживает НДС", "Ограниченный функционал"]
+        }
+    ],
+    "criteria": ["Облачное решение", "Мобильное приложение", "Поддержка налогов", "Учет товаров", "Поддержка НДС", "Поддержка УСН"]
+}

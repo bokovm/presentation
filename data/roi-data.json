@@ -1,0 +1,25 @@
+{
+    "businessTypes": {
+        "ip": {
+            "softwareCost": 1000,
+            "savingPercentage": 40,
+            "paybackPeriod": "2.3 мес",
+            "yearlySavings": 216000,
+            "recommendedSoftware": "Моё Дело"
+        },
+        "ooo-services": {
+            "softwareCost": 3300,
+            "savingPercentage": 35,
+            "paybackPeriod": "3-6 мес",
+            "yearlySavings": 300000,
+            "recommendedSoftware": "Контур.Бухгалтерия"
+        },
+        "ooo-trade": {
+            "softwareCost": 5000,
+            "savingPercentage": 30,
+            "paybackPeriod": "6.8 мес",
+            "yearlySavings": 480000,
+            "recommendedSoftware": "1С:Бухгалтерия"
+        }
+    }
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Автоматизация бухучета в малом бизнесе</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/slides.css">
+</head>
+<body>
+    <!-- Контейнер прогресса -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progress-bar"></div>
+    </div>
+    
+    <!-- Навигационные кнопки -->
+    <button class="nav-btn prev-btn" id="prev-btn" aria-label="Предыдущий слайд">←</button>
+    <button class="nav-btn next-btn" id="next-btn" aria-label="Следующий слайд">→</button>
+    
+    <!-- Кнопки быстрой навигации -->
+    <div class="quick-nav">
+        <button class="nav-dot active" data-slide="0"></button>
+        <button class="nav-dot" data-slide="1"></button>
+        <button class="nav-dot" data-slide="2"></button>
+        <button class="nav-dot" data-slide="3"></button>
+        <button class="nav-dot" data-slide="4"></button>
+        <button class="nav-dot" data-slide="5"></button>
+        <button class="nav-dot" data-slide="6"></button>
+        <button class="nav-dot" data-slide="7"></button>
+        <button class="nav-dot" data-slide="8"></button>
+        <button class="nav-dot" data-slide="9"></button>
+        <button class="nav-dot" data-slide="10"></button>
+        <button class="nav-dot" data-slide="11"></button>
+        <button class="nav-dot" data-slide="12"></button>
+        <button class="nav-dot" data-slide="13"></button>
+        <button class="nav-dot" data-slide="14"></button>
+    </div>
+    
+    <!-- Слайды презентации -->
+    <div class="slides-container" id="slides-container">
+        <!-- Слайды будут загружаться динамически -->
+    </div>
+
+    <!-- Подключаем скрипты в правильном порядке -->
+    <script src="js/navigation.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/calculator.js"></script>
+    <script src="js/comparison.js"></script>
+</body>
+</html>

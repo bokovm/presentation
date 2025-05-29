@@ -1,0 +1,365 @@
+/* Стили для конкретных слайдов */
+
+/* Титульный слайд */
+#slide-cover {
+    background: linear-gradient(rgba(42, 92, 170, 0.8), rgba(30, 58, 138, 0.8)), 
+                url('assets/images/abstract-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+}
+
+#slide-cover .content {
+    background: transparent;
+    box-shadow: none;
+}
+
+#slide-cover h1 {
+    color: white;
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+#slide-cover .subtitle {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+#slide-cover .credits {
+    font-size: 1.2rem;
+    margin-top: 3rem;
+}
+
+#slide-cover .credits p {
+    margin: 0.5rem 0;
+}
+
+/* Слайд с проблемами */
+#slide-problem .icon-grid {
+    margin: 3rem 0;
+}
+
+#slide-problem .icon-item {
+    background: rgba(249, 115, 22, 0.1);
+    border: 2px solid var(--warning);
+    padding: 1.5rem;
+    border-radius: 12px;
+}
+
+#slide-problem .icon-item img {
+    width: 70px;
+    height: 70px;
+}
+
+#slide-problem .quote {
+    font-style: italic;
+    font-size: 1.2rem;
+    margin-top: 2rem;
+    padding: 1rem;
+    border-left: 3px solid var(--warning);
+    background: rgba(249, 115, 22, 0.05);
+}
+
+/* Слайд с гипотезой */
+#slide-hypothesis .center-icon {
+    margin: 2rem 0;
+}
+
+#slide-hypothesis .center-icon img {
+    width: 150px;
+    height: 150px;
+}
+
+#slide-hypothesis .hypothesis-effects {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+#slide-hypothesis .effect {
+    display: flex;
+    align-items: center;
+    background: rgba(16, 185, 129, 0.1);
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+#slide-hypothesis .effect img {
+    width: 50px;
+    height: 50px;
+    margin-right: 1rem;
+}
+
+#slide-hypothesis .thesis {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-top: 2rem;
+    text-align: center;
+    color: var(--primary-dark);
+}
+
+/* Слайд с целями */
+#slide-goals .target-diagram {
+    position: relative;
+    height: 400px;
+    margin: 2rem auto;
+}
+
+#slide-goals .target-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#slide-goals .target-icon img {
+    width: 120px;
+    height: 120px;
+}
+
+#slide-goals .task {
+    position: absolute;
+    width: 100px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#slide-goals .task:hover {
+    transform: scale(1.1);
+}
+
+#slide-goals .task-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 0.5rem;
+    font-weight: bold;
+}
+
+/* Слайд с результатами */
+#slide-results .results-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+#slide-results .result-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+#slide-results .result-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--light-gray);
+    padding-bottom: 1rem;
+}
+
+#slide-results .result-header img {
+    width: 40px;
+    height: 40px;
+    margin-right: 1rem;
+}
+
+#slide-results .comparison {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1.5rem 0;
+}
+
+#slide-results .before, 
+#slide-results .after {
+    padding: 0.8rem;
+    border-radius: 8px;
+    text-align: center;
+    width: 45%;
+}
+
+#slide-results .before {
+    background: rgba(249, 115, 22, 0.1);
+    border: 1px solid var(--warning);
+}
+
+#slide-results .after {
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid var(--accent);
+}
+
+#slide-results .value {
+    display: block;
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-top: 0.5rem;
+}
+
+#slide-results .positive .change {
+    color: var(--accent-dark);
+    font-weight: bold;
+    display: block;
+    margin-top: 0.5rem;
+}
+
+/* ROI слайд */
+#slide-roi .roi-highlight {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+#slide-roi .roi-value {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--accent-dark);
+}
+
+#slide-roi .roi-graph {
+    margin: 3rem 0;
+}
+
+#slide-roi .graph-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 300px;
+    gap: 3rem;
+    padding: 0 2rem;
+}
+
+#slide-roi .graph-bar {
+    width: 120px;
+    text-align: center;
+}
+
+#slide-roi .bar-fill {
+    background: var(--accent);
+    border-radius: 8px 8px 0 0;
+    position: relative;
+    transition: height 1s ease;
+}
+
+#slide-roi .bar-label {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    height: 40px;
+}
+
+#slide-roi .bar-value {
+    margin-top: 0.5rem;
+    font-weight: bold;
+}
+
+/* Слайд сравнения ПО */
+#slide-solutions .software-tabs {
+    margin-top: 2rem;
+}
+
+#slide-solutions .tab-header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    gap: 1rem;
+}
+
+#slide-solutions .tab-link {
+    padding: 0.8rem 1.5rem;
+    background: var(--light-gray);
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+#slide-solutions .tab-link.active {
+    background: var(--primary);
+    color: white;
+}
+
+#slide-solutions .tab-content {
+    display: none;
+}
+
+#slide-solutions .tab-content.active {
+    display: block;
+}
+
+#slide-solutions .software-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+#slide-solutions .software-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid var(--light-gray);
+}
+
+#slide-solutions .software-header img {
+    width: 60px;
+    height: 60px;
+    margin-right: 1.5rem;
+}
+
+#slide-solutions .software-title {
+    flex-grow: 1;
+}
+
+#slide-solutions .price {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--primary);
+}
+
+/* Адаптивность */
+@media (max-width: 992px) {
+    #slide-hypothesis .hypothesis-effects {
+        grid-template-columns: 1fr;
+    }
+    
+    #slide-roi .graph-container {
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+    }
+    
+    #slide-roi .graph-bar {
+        width: 80%;
+        margin-bottom: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    #slide-solutions .tab-header {
+        flex-direction: column;
+    }
+    
+    #slide-solutions .software-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    #slide-solutions .software-header img {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+}
