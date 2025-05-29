@@ -1,73 +1,44 @@
-// js/comparison.js
+// comparison.js — Интерактивное сравнение ПО (слайд 8)
+
 document.addEventListener('DOMContentLoaded', () => {
-    const filterContainer = document.getElementById('software-filters');
-    const softwareItems = document.querySelectorAll('.software-item');
-    
-    if (!filterContainer) return;
-    
-    // Создаем фильтры
-    const filters = [
-        { id: 'filter-cloud', label: 'Облачное решение', key: 'cloud' },
-        { id: 'filter-mobile', label: 'Мобильное приложение', key: 'mobile' },
-        { id: 'filter-tax', label: 'Поддержка налогов', key: 'taxSupport' },
-        { id: 'filter-inventory', label: 'Учет товаров', key: 'inventory' },
-        { id: 'filter-nds', label: 'Поддержка НДС', key: 'nds' },
-        { id: 'filter-usn', label: 'Поддержка УСН', key: 'usn' }
-    ];
-    
-    filters.forEach(filter => {
-        const filterElement = document.createElement('div');
-        filterElement.className = 'filter-item';
-        filterElement.innerHTML = `
-            <input type="checkbox" id="${filter.id}" data-key="${filter.key}">
-            <label for="${filter.id}">${filter.label}</label>
-        `;
-        filterContainer.appendChild(filterElement);
+  // Переключение табов
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const tab = btn.getAttribute('data-tab');
+      document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+      document.getElementById('tab-' + tab).classList.add('active');
     });
-    
-    // Обработка фильтрации
-    filterContainer.addEventListener('change', () => {
-        const activeFilters = {};
-        
-        // Собираем активные фильтры
-        document.querySelectorAll('#software-filters input:checked').forEach(input => {
-            activeFilters[input.dataset.key] = true;
-        });
-        
-        // Применяем фильтры к ПО
-        softwareItems.forEach(item => {
-            let matches = true;
-            
-            for (const key in activeFilters) {
-                if (item.dataset[key] !== 'true') {
-                    matches = false;
-                    break;
-                }
-            }
-            
-            item.style.display = matches ? 'block' : 'none';
-        });
+  });
+
+  // Фильтр по чекбоксам
+  const filters = {
+    nds: document.getElementById('filter-nds'),
+    warehouse: document.getElementById('filter-warehouse'),
+    mobile: document.getElementById('filter-mobile'),
+    budget: document.getElementById('filter-budget')
+  };
+  function applyFilters() {
+    // Логика подсветки/отключения табов по фильтрам
+    // Пример для трёх продуктов:
+    // 1С: есть НДС и склад, не мобильное, не бюджет. Контур: НДС есть, склад нет, мобильное, не бюджет. МоёДело: нет НДС, нет склада, мобильное, бюджет.
+    const rules = {
+      '1c':   { nds: true, warehouse: true, mobile: false, budget: false },
+      'kontur': { nds: true, warehouse: false, mobile: true, budget: false },
+      'moedelo': { nds: false, warehouse: false, mobile: true, budget: true }
+    };
+    Object.entries(rules).forEach(([key, vals]) => {
+      let ok = true;
+      if (filters.nds.checked && !vals.nds) ok = false;
+      if (filters.warehouse.checked && !vals.warehouse) ok = false;
+      if (filters.mobile.checked && !vals.mobile) ok = false;
+      if (filters.budget.checked && !vals.budget) ok = false;
+      document.querySelector(`.tab-btn[data-tab="${key}"]`).style.opacity = ok ? '1' : '0.45';
+      document.getElementById(`tab-${key}`).style.opacity = ok ? '1' : '0.45';
     });
-    
-    // Инициализация табов
-    const tabLinks = document.querySelectorAll('.tab-link');
-    const tabContents = document.querySelectorAll('.tab-content');
-    
-    tabLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            const targetId = link.dataset.target;
-            
-            // Обновляем активные табы
-            tabLinks.forEach(tab => tab.classList.remove('active'));
-            link.classList.add('active');
-            
-            // Показываем целевой контент
-            tabContents.forEach(content => {
-                content.classList.remove('active');
-                if (content.id === targetId) {
-                    content.classList.add('active');
-                }
-            });
-        });
-    });
+  }
+  Object.values(filters).forEach(f => f && f.addEventListener('change', applyFilters));
+  // Изначально показать все
+  applyFilters();
 });

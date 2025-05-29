@@ -1,41 +1,45 @@
-<div class="content">
-    <h2>Пошаговое Внедрение: От Идеи к Результату</h2>
-    
-    <div class="timeline">
-        <div class="timeline-step">
-            <div class="step-number">1</div>
-            <div class="step-content">
-                <h3>Подготовка (1-2 нед)</h3>
-                <p>Аудит, Ответственный, Бэкап</p>
-            </div>
-        </div>
-        
-        <div class="timeline-step">
-            <div class="step-number">2</div>
-            <div class="step-content">
-                <h3>Настройка (3-4 нед)</h3>
-                <p>Перенос данных (Контрагенты &lt;100, Номенклатура &lt;500), Интеграция</p>
-            </div>
-        </div>
-        
-        <div class="timeline-step">
-            <div class="step-number">3</div>
-            <div class="step-content">
-                <h3>Обучение (Обязательно!)</h3>
-                <p>Первичка (4ч), Отчетность (3ч), Ошибки (2ч)</p>
-            </div>
-        </div>
-        
-        <div class="timeline-step">
-            <div class="step-number">4</div>
-            <div class="step-content">
-                <h3>Запуск & Контроль (3 мес)</h3>
-                <p>Параллельный учет, Сверка, Фиксация времени (Цель: -50%)</p>
-            </div>
-        </div>
+<!-- Пошаговое внедрение: от идеи к результату -->
+<section class="slide slide-implementation">
+  <div class="slide-content">
+    <h2>ПОШАГОВОЕ ВНЕДРЕНИЕ</h2>
+    <div class="implementation-timeline">
+      <div class="timeline-step" data-step="1">
+        <img src="../assets/icons/audit.svg" alt="Подготовка" />
+        <span>Подготовка<br>(1–2 нед)</span>
+      </div>
+      <div class="timeline-arrow">→</div>
+      <div class="timeline-step" data-step="2">
+        <img src="../assets/icons/setting.svg" alt="Настройка" />
+        <span>Настройка<br>(3–4 нед)</span>
+      </div>
+      <div class="timeline-arrow">→</div>
+      <div class="timeline-step" data-step="3">
+        <img src="../assets/icons/training.svg" alt="Обучение" />
+        <span>Обучение<br>(Обязательно!)</span>
+      </div>
+      <div class="timeline-arrow">→</div>
+      <div class="timeline-step" data-step="4">
+        <img src="../assets/icons/launch.svg" alt="Запуск" />
+        <span>Запуск &amp; Контроль<br>(3 мес)</span>
+      </div>
     </div>
-    
-    <div class="implementation-tip">
-        <p>Ключевой совет: Начинайте с небольшого пилотного проекта перед полным внедрением</p>
+    <div class="step-details" id="stepDetails">
+      <!-- Сюда выводится описание по клику на этап -->
+      <div class="step-desc" data-step="1">
+        <b>Подготовка:</b> Аудит, ответственный, бэкап
+      </div>
+      <div class="step-desc" data-step="2">
+        <b>Настройка:</b> Перенос данных (контрагенты &lt;100, номенклатура &lt;500), интеграция (банк, касса, ФНС)
+      </div>
+      <div class="step-desc" data-step="3">
+        <b>Обучение:</b> Первичка (4ч), отчетность (3ч), ошибки (2ч)
+      </div>
+      <div class="step-desc" data-step="4">
+        <b>Запуск &amp; Контроль:</b> Параллельный учет, сверка, фиксация времени (цель: –50%)
+      </div>
     </div>
-</div>
+    <div class="timeline-progress">
+      <div class="progress-bar"></div>
+    </div>
+  </div>
+</section>

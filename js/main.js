@@ -1,71 +1,115 @@
-// js/main.js
+// main.js — Инициализация, переключение слайдов, базовые интерактивы
+
 document.addEventListener('DOMContentLoaded', () => {
-    const slidesContainer = document.getElementById('slides-container');
-    const slideFiles = [
-        'slides/01-problem.html',
-        'slides/02-hypothesis.html',
-        'slides/03-goals.html',    // Исправленный файл
-        'slides/04-methodology.html',
-        'slides/05-results.html',
-        'slides/06-roi.html',      // Контент из 07-solutions.html
-        'slides/07-solutions.html', // Новый файл для сравнения ПО
-        'slides/08-trends.html',
-        'slides/09-checklist.html',
-        'slides/10-implementation.html',
-        'slides/11-risks.html',
-        'slides/12-nnov-context.html',
-        'slides/13-conclusion.html',
-        'slides/14-thanks.html'
-    ];
+  // Навигация по слайдам
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  let currentSlide = 0;
 
-    // Загружаем титульный слайд
-    slidesContainer.innerHTML = `
-        <section id="slide-cover" class="slide active" data-bg="abstract-bg">
-            <div class="content fade-in-up">
-                <h1>АВТОМАТИЗАЦИЯ БУХУЧЕТА В МАЛОМ БИЗНЕСЕ</h1>
-                <p class="subtitle">Влияние на эффективность и снижение ошибок</p>
-                <div class="credits">
-                    <p>ГБПОУ «Богородский политехнический техникум»</p>
-                    <p>Выполнил: Боков Макар (1-2Б)</p>
-                    <p>Преподаватель: [Имя Фамилия]</p>
-                    <p>2023</p>
-                </div>
-            </div>
-        </section>
-    `;
-
-    // Создаем массив промисов для загрузки слайдов
-    const slidePromises = slideFiles.map(file => {
-        return fetch(file)
-            .then(response => {
-                if (!response.ok) throw new Error(`Ошибка загрузки: ${file}`);
-                return response.text();
-            })
-            .then(html => {
-                const slide = document.createElement('section');
-                slide.className = 'slide';
-                slide.innerHTML = html;
-                slidesContainer.appendChild(slide);
-            });
+  function showSlide(idx) {
+    slides.forEach((slide, i) => {
+      slide.style.display = (i === idx) ? 'flex' : 'none';
     });
+    updateProgressBar(idx);
+    window.scrollTo(0, 0);
+  }
 
-    // Ждем загрузки всех слайдов перед инициализацией навигации
-    Promise.all(slidePromises)
-        .then(() => {
-            initNavigation();
-        })
-        .catch(error => {
-            console.error('Ошибка загрузки слайдов:', error);
-            // Создаем заглушку для ошибки
-            const errorSlide = document.createElement('section');
-            errorSlide.className = 'slide';
-            errorSlide.innerHTML = `
-                <div class="content">
-                    <h2>Ошибка загрузки</h2>
-                    <p>${error.message}</p>
-                </div>
-            `;
-            slidesContainer.appendChild(errorSlide);
-            initNavigation();
-        });
+  function nextSlide() {
+    if (currentSlide < slides.length - 1) {
+      currentSlide++;
+      showSlide(currentSlide);
+    }
+  }
+  function prevSlide() {
+    if (currentSlide > 0) {
+      currentSlide--;
+      showSlide(currentSlide);
+    }
+  }
+
+  function updateProgressBar(idx) {
+    const bar = document.querySelector('.progress-bar');
+    if (bar) {
+      bar.style.width = ((idx + 1) / slides.length * 100) + '%';
+    }
+  }
+
+  // Кнопки навигации
+  document.querySelectorAll('.nav-btn.next').forEach(btn => btn.addEventListener('click', nextSlide));
+  document.querySelectorAll('.nav-btn.prev').forEach(btn => btn.addEventListener('click', prevSlide));
+
+  // Клавиши ← →
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') nextSlide();
+    if (e.key === 'ArrowLeft') prevSlide();
+  });
+
+  // Первоначальный показ
+  showSlide(currentSlide);
+
+  // Анимация появления для fade-in
+  document.querySelectorAll('.fade-in').forEach((el, i) => {
+    setTimeout(() => el.classList.add('animated'), 200 + i * 120);
+  });
+
+  // Анимация для fade-in-green (индикаторы)
+  document.querySelectorAll('.fade-in-green').forEach((el, i) => {
+    setTimeout(() => el.classList.add('animated'), 400 + i * 250);
+  });
+
+  // Для checklist — интерактивное отмечание
+  document.querySelectorAll('.checklist-items .checkable').forEach(item => {
+    item.addEventListener('click', () => {
+      item.classList.toggle('checked');
+    });
+  });
+
+  // Таймлайн внедрения — описание этапа по клику
+  document.querySelectorAll('.timeline-step').forEach(step => {
+    step.addEventListener('click', () => {
+      let idx = step.getAttribute('data-step');
+      document.querySelectorAll('.timeline-step').forEach(s => s.classList.remove('active'));
+      step.classList.add('active');
+      document.querySelectorAll('.step-desc').forEach(desc => {
+        desc.classList.remove('active');
+        if (desc.getAttribute('data-step') === idx) desc.classList.add('active');
+      });
+      // Прогресс-бар
+      const bar = document.querySelector('.timeline-progress .progress-bar');
+      if (bar) {
+        bar.style.width = (idx / 4 * 100) + '%';
+      }
+    });
+  });
+  // Показываем первый этап по умолчанию
+  let firstStep = document.querySelector('.timeline-step[data-step="1"]');
+  if (firstStep) firstStep.click();
+
+  // Риски — клик для "отклонения" риска
+  document.querySelectorAll('.risk-row').forEach(row => {
+    row.addEventListener('click', () => {
+      row.classList.toggle('resolved');
+    });
+  });
+
+  // Нижегородский контекст — интерактивная карта
+  document.querySelectorAll('.map-marker').forEach(marker => {
+    marker.addEventListener('click', () => {
+      let city = marker.getAttribute('data-city');
+      document.querySelectorAll('.map-marker').forEach(m => m.classList.remove('active'));
+      marker.classList.add('active');
+      document.querySelectorAll('.nnov-info').forEach(block => {
+        block.classList.remove('active');
+        if (block.getAttribute('data-city') === city) block.classList.add('active');
+      });
+    });
+  });
+  // По умолчанию — показать Нижний Новгород
+  let nnMarker = document.querySelector('.map-marker[data-city="nn"]');
+  if (nnMarker) nnMarker.click();
+
+  // Финальный слайд — анимация появления контактов/QR
+  let thanksContacts = document.querySelector('.slide-thanks .thanks-contact');
+  if (thanksContacts) {
+    setTimeout(() => thanksContacts.classList.add('fade-in'), 400);
+  }
 });

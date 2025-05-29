@@ -1,87 +1,100 @@
-/* Анимации появления */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeInDown {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeInLeft {
-    from {
-        opacity: 0;
-        transform: translateX(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes fadeInRight {
-    from {
-        opacity: 0;
-        transform: translateX(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-/* Анимация тряски */
-@keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
-    20%, 40%, 60%, 80% { transform: translateX(5px); }
-}
-
-/* Применение анимаций */
+/* Анимации и спецэффекты */
+/* Плавное появление */
 .fade-in {
-    animation: fadeIn 0.8s ease forwards;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeInUp 0.7s forwards;
+  animation-delay: calc(var(--effect-idx, 1) * 0.18s);
+}
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
-.fade-in-up {
-    animation: fadeInUp 0.8s ease forwards;
+/* Зеленое загорание индикатора */
+.fade-in-green {
+  opacity: 0;
+  animation: fadeInGreen 0.7s forwards;
+}
+@keyframes fadeInGreen {
+  0% { opacity: 0; filter: grayscale(0.7); }
+  70% { opacity: 1; filter: drop-shadow(0 0 8px #10B98155); }
+  100% { opacity: 1; filter: none; }
 }
 
-.fade-in-down {
-    animation: fadeInDown 0.8s ease forwards;
+/* Анимация тряски для проблемных иконок */
+.shake {
+  animation: shakeAnim 0.7s cubic-bezier(.36,.07,.19,.97) both;
+  animation-iteration-count: 2;
+}
+@keyframes shakeAnim {
+  10%, 90% { transform: translateX(-2px);}
+  20%, 80% { transform: translateX(4px);}
+  30%, 50%, 70% { transform: translateX(-7px);}
+  40%, 60% { transform: translateX(7px);}
+  100% { transform: none; }
 }
 
-.fade-in-left {
-    animation: fadeInLeft 0.8s ease forwards;
+/* Анимация мигания */
+.blink {
+  animation: blinkAnim 1.6s infinite;
+}
+@keyframes blinkAnim {
+  0%,100% { opacity: 1; }
+  45% { opacity: 0.1; }
+  50% { opacity: 1; }
 }
 
-.fade-in-right {
-    animation: fadeInRight 0.8s ease forwards;
+/* Плавающие иконки методологии */
+.floatable {
+  transition: transform 0.35s;
+}
+.floatable:hover {
+  transform: translateY(-10px) scale(1.1) rotate(-3deg);
 }
 
-.shake-animation {
-    animation: shake 0.8s ease;
+/* Анимация роста столбиков */
+@keyframes barGrow {
+  from { height: 0; }
+  to { height: var(--bar-height, 100px);}
 }
 
-.delay-1 { animation-delay: 0.2s; }
-.delay-2 { animation-delay: 0.4s; }
-.delay-3 { animation-delay: 0.6s; }
-.delay-4 { animation-delay: 0.8s; }
-.delay-5 { animation-delay: 1.0s; }
+/* Анимация появления карточек/слайдов */
+.card-pop {
+  opacity: 0;
+  transform: scale(0.9) translateY(40px);
+  animation: cardPopAnim 0.55s forwards;
+}
+@keyframes cardPopAnim {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Анимация прогресса таймлайна */
+@keyframes progressBarGrow {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+/* Анимация сборки выводов */
+.conclusion-anim-assemble {
+  animation: assembleIn 1.2s cubic-bezier(.22,1,.36,1.15) both;
+}
+@keyframes assembleIn {
+  0% { opacity: 0; transform: scale(0.8) rotate(-10deg);}
+  60% { opacity: 1; transform: scale(1.05) rotate(2deg);}
+  100% { opacity: 1; transform: none;}
+}
+
+/* Анимированные иконки трендов */
+.trend-icon.animated {
+  animation: trendPulse 2s infinite alternate;
+}
+@keyframes trendPulse {
+  0% { filter: brightness(1); transform: scale(1);}
+  100% { filter: brightness(1.2); transform: scale(1.08);}
+}

@@ -1,67 +1,42 @@
-<div class="content">
-    <h2>Главный Результат: Цифры Говорят Сами За Себя</h2>
-    
-    <div class="results-container">
-        <!-- Время на отчетность -->
-        <div class="result-card">
-            <div class="result-header">
-                <img src="assets/icons/time.svg" alt="Время">
-                <h3>ВРЕМЯ на отчетность</h3>
-            </div>
-            <div class="comparison">
-                <div class="before">
-                    <span>Было:</span>
-                    <span class="value">3.2 ч/док</span>
-                </div>
-                <div class="arrow">→</div>
-                <div class="after positive">
-                    <span>Стало:</span>
-                    <span class="value">0.8 ч/док</span>
-                    <span class="change">⬇️ 75%</span>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Ошибки в отчетности -->
-        <div class="result-card">
-            <div class="result-header">
-                <img src="assets/icons/error.svg" alt="Ошибки">
-                <h3>ОШИБКИ в отчетности</h3>
-            </div>
-            <div class="comparison">
-                <div class="before">
-                    <span>Было:</span>
-                    <span class="value">5 шт/период</span>
-                </div>
-                <div class="arrow">→</div>
-                <div class="after positive">
-                    <span>Стало:</span>
-                    <span class="value">1 шт/период</span>
-                    <span class="change">⬇️ 80%</span>
-                </div>
-            </div>
-            <p class="sub-result">⬇️92% нарушений сроков</p>
-        </div>
-        
-        <!-- Затраты на бухгалтерию -->
-        <div class="result-card">
-            <div class="result-header">
-                <img src="assets/icons/money.svg" alt="Затраты">
-                <h3>ЗАТРАТЫ на бухгалтерию</h3>
-            </div>
-            <div class="comparison">
-                <div class="before">
-                    <span>Было:</span>
-                    <span class="value">100%</span>
-                </div>
-                <div class="arrow">→</div>
-                <div class="after positive">
-                    <span>Стало:</span>
-                    <span class="value">70%</span>
-                    <span class="change">⬇️ 30%</span>
-                </div>
-            </div>
-            <p class="sub-result">Пример: ООО сэкономил 45 000 руб./мес.</p>
-        </div>
+<!-- Экономика вопроса: ROI автоматизации -->
+<section class="slide slide-roi">
+  <div class="slide-content">
+    <h2>ROI АВТОМАТИЗАЦИИ</h2>
+    <div class="roi-main-indicator">
+      <img src="../assets/icons/roi.svg" alt="ROI" />
+      <b>ROI = 252% (для ООО)</b>
     </div>
-</div>
+    <div class="roi-bars">
+      <canvas id="roiBarChart" width="540" height="220"></canvas>
+    </div>
+    <div class="roi-info">
+      <ul>
+        <li>ИП / «Моё Дело»: <b>2.3 мес.</b> – <span>216 тыс.р./год</span></li>
+        <li>ООО (услуги) / «Контур»: <b>3–6 мес.</b> – <span>150–300 тыс.р./год</span></li>
+        <li>ООО (торговля) / «1С»: <b>6.8 мес.</b> – <span>200–500 тыс.р./год</span></li>
+        <li>⬇️100% штрафов у 95%, ⬇️15–28% потерь</li>
+      </ul>
+      <button class="btn-accent" id="openRoiCalc">Рассчитать свой ROI</button>
+    </div>
+    <!-- Модальное окно калькулятора ROI -->
+    <div class="modal" id="roiModal">
+      <div class="modal-content">
+        <span class="close" id="closeRoiModal">&times;</span>
+        <h3>Калькулятор ROI</h3>
+        <form id="roiForm">
+          <label>Тип бизнеса:
+            <select name="type">
+              <option value="ip">ИП</option>
+              <option value="ooo-uslugi">ООО (услуги)</option>
+              <option value="ooo-torgovlya">ООО (торговля)</option>
+            </select>
+          </label>
+          <label>Годовой оборот (₽): <input type="number" name="turnover" min="100000" required></label>
+          <label>Затраты на бухг. в мес. (₽): <input type="number" name="cost" min="0" required></label>
+          <button type="submit" class="btn-accent">Рассчитать</button>
+        </form>
+        <div id="roiResult"></div>
+      </div>
+    </div>
+  </div>
+</section>

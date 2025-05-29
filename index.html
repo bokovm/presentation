@@ -16,10 +16,10 @@
     </div>
     
     <!-- Навигационные кнопки -->
-    <button class="nav-btn prev-btn" id="prev-btn" aria-label="Предыдущий слайд">
+    <button class="nav-btn prev prev-btn" id="prev-btn" aria-label="Предыдущий слайд">
         <svg width="24" height="24" viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
     </button>
-    <button class="nav-btn next-btn" id="next-btn" aria-label="Следующий слайд">
+    <button class="nav-btn next next-btn" id="next-btn" aria-label="Следующий слайд">
         <svg width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
     </button>
     
@@ -44,7 +44,8 @@
     
     <!-- Слайды презентации -->
     <div class="slides-container" id="slides-container">
-        <!-- Слайды будут загружаться динамически -->
+        <!-- Слайды будут загружаться динамически или включаться как <section class="slide">...</section> -->
+        <!-- Если вы включаете все слайды статически, просто разместите их тут. -->
     </div>
 
     <!-- Подключаем скрипты -->
@@ -52,5 +53,56 @@
     <script src="js/main.js"></script>
     <script src="js/calculator.js"></script>
     <script src="js/comparison.js"></script>
+    <script>
+    // Динамическая загрузка слайдов (если используется файловая структура slides/*.html)
+    // Если вы вставляете слайды напрямую в index.html, этот блок не нужен.
+    const slideFiles = [
+        "slides/01-problem.html","slides/02-hypothesis.html","slides/03-goals.html","slides/04-methodology.html",
+        "slides/05-results.html","slides/06-roi.html","slides/07-solutions.html","slides/08-trends.html",
+        "slides/09-checklist.html","slides/10-implementation.html","slides/11-risks.html","slides/12-nnov-context.html",
+        "slides/13-conclusion.html","slides/14-thanks.html"
+    ];
+    document.addEventListener('DOMContentLoaded', async () => {
+        const container = document.getElementById('slides-container');
+        if (!container) return;
+        for (let i = 0; i < slideFiles.length; i++) {
+            try {
+                const resp = await fetch(slideFiles[i]);
+                if (resp.ok) {
+                    const html = await resp.text();
+                    // Создаём обёртку, чтобы slide селектор корректно работал
+                    const tmp = document.createElement('div');
+                    tmp.innerHTML = html;
+                    const section = tmp.querySelector('section.slide');
+                    if (section) {
+                        section.style.display = 'none';
+                        container.appendChild(section);
+                    }
+                }
+            } catch (e) {
+                console.error(`Ошибка загрузки слайда ${slideFiles[i]}:`, e);
+            }
+        }
+        // После загрузки слайдов, показываем первый слайд через main.js
+        if (typeof window.showSlide === 'function') window.showSlide(0);
+
+        // Навигация по точкам
+        const dots = document.querySelectorAll('.nav-dot');
+        dots.forEach((dot, i) => {
+            dot.addEventListener('click', () => {
+                if (typeof window.showSlide === 'function') window.showSlide(i);
+                dots.forEach(d => d.classList.remove('active'));
+                dot.classList.add('active');
+            });
+        });
+        // Кнопки назад/вперёд
+        document.getElementById('prev-btn').addEventListener('click', () => {
+            if (typeof window.prevSlide === 'function') window.prevSlide();
+        });
+        document.getElementById('next-btn').addEventListener('click', () => {
+            if (typeof window.nextSlide === 'function') window.nextSlide();
+        });
+    });
+    </script>
 </body>
 </html>
