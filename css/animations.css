@@ -1,10 +1,8 @@
-/* Анимации и спецэффекты */
-/* Плавное появление */
 .fade-in {
   opacity: 0;
-  transform: translateY(40px);
-  animation: fadeInUp 0.7s forwards;
-  animation-delay: calc(var(--effect-idx, 1) * 0.18s);
+  transform: translateY(24px);
+  animation: fadeInUp 0.6s forwards;
+  animation-delay: calc(var(--effect-idx, 1) * 0.12s);
 }
 @keyframes fadeInUp {
   to {
@@ -13,7 +11,6 @@
   }
 }
 
-/* Зеленое загорание индикатора */
 .fade-in-green {
   opacity: 0;
   animation: fadeInGreen 0.7s forwards;
@@ -24,7 +21,6 @@
   100% { opacity: 1; filter: none; }
 }
 
-/* Анимация тряски для проблемных иконок */
 .shake {
   animation: shakeAnim 0.7s cubic-bezier(.36,.07,.19,.97) both;
   animation-iteration-count: 2;
@@ -37,7 +33,6 @@
   100% { transform: none; }
 }
 
-/* Анимация мигания */
 .blink {
   animation: blinkAnim 1.6s infinite;
 }
@@ -47,25 +42,22 @@
   50% { opacity: 1; }
 }
 
-/* Плавающие иконки методологии */
 .floatable {
-  transition: transform 0.35s;
+  transition: transform 0.28s;
 }
 .floatable:hover {
-  transform: translateY(-10px) scale(1.1) rotate(-3deg);
+  transform: translateY(-8px) scale(1.07) rotate(-2deg);
 }
 
-/* Анимация роста столбиков */
 @keyframes barGrow {
   from { height: 0; }
-  to { height: var(--bar-height, 100px);}
+  to { height: var(--bar-height, 80px);}
 }
 
-/* Анимация появления карточек/слайдов */
 .card-pop {
   opacity: 0;
-  transform: scale(0.9) translateY(40px);
-  animation: cardPopAnim 0.55s forwards;
+  transform: scale(0.92) translateY(20px);
+  animation: cardPopAnim 0.44s forwards;
 }
 @keyframes cardPopAnim {
   to {
@@ -74,13 +66,11 @@
   }
 }
 
-/* Анимация прогресса таймлайна */
 @keyframes progressBarGrow {
   from { width: 0; }
   to { width: 100%; }
 }
 
-/* Анимация сборки выводов */
 .conclusion-anim-assemble {
   animation: assembleIn 1.2s cubic-bezier(.22,1,.36,1.15) both;
 }
@@ -90,7 +80,6 @@
   100% { opacity: 1; transform: none;}
 }
 
-/* Анимированные иконки трендов */
 .trend-icon.animated {
   animation: trendPulse 2s infinite alternate;
 }

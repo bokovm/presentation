@@ -1,15 +1,13 @@
-// comparison.js — Интерактивное сравнение ПО (слайд 8)
-
-document.addEventListener('DOMContentLoaded', () => {
+window.initComparison = function() {
   // Переключение табов
   document.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
+    btn.onclick = () => {
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       const tab = btn.getAttribute('data-tab');
       document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
       document.getElementById('tab-' + tab).classList.add('active');
-    });
+    };
   });
 
   // Фильтр по чекбоксам
@@ -20,9 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
     budget: document.getElementById('filter-budget')
   };
   function applyFilters() {
-    // Логика подсветки/отключения табов по фильтрам
-    // Пример для трёх продуктов:
-    // 1С: есть НДС и склад, не мобильное, не бюджет. Контур: НДС есть, склад нет, мобильное, не бюджет. МоёДело: нет НДС, нет склада, мобильное, бюджет.
     const rules = {
       '1c':   { nds: true, warehouse: true, mobile: false, budget: false },
       'kontur': { nds: true, warehouse: false, mobile: true, budget: false },
@@ -39,6 +34,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
   Object.values(filters).forEach(f => f && f.addEventListener('change', applyFilters));
-  // Изначально показать все
   applyFilters();
-});
+};

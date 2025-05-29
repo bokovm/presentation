@@ -10,20 +10,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Контейнер прогресса -->
+    <!-- Прогресс-бар -->
     <div class="progress-container">
         <div class="progress-bar" id="progress-bar"></div>
     </div>
     
-    <!-- Навигационные кнопки -->
+    <!-- Кнопки навигации -->
     <button class="nav-btn prev prev-btn" id="prev-btn" aria-label="Предыдущий слайд">
         <svg width="24" height="24" viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
     </button>
     <button class="nav-btn next next-btn" id="next-btn" aria-label="Следующий слайд">
         <svg width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
     </button>
-    
-    <!-- Кнопки быстрой навигации -->
+
+    <!-- Быстрая навигация по точкам -->
     <div class="quick-nav">
         <button class="nav-dot active" data-slide="0"></button>
         <button class="nav-dot" data-slide="1"></button>
@@ -40,26 +40,37 @@
         <button class="nav-dot" data-slide="12"></button>
         <button class="nav-dot" data-slide="13"></button>
         <button class="nav-dot" data-slide="14"></button>
+        <button class="nav-dot" data-slide="15"></button>
     </div>
     
-    <!-- Слайды презентации -->
+    <!-- Контейнер для слайдов -->
     <div class="slides-container" id="slides-container">
-        <!-- Слайды будут загружаться динамически или включаться как <section class="slide">...</section> -->
+        <!-- Слайды будут подгружены динамически -->
     </div>
 
-    <!-- Подключаем скрипты -->
+    <!-- Скрипты -->
     <script src="js/navigation.js"></script>
+    <script src="js/main.js"></script>
     <script src="js/calculator.js"></script>
     <script src="js/comparison.js"></script>
-    <script src="js/main.js"></script>
     <script>
-    // Динамическая загрузка слайдов (если используется файловая структура slides/*.html)
-    // Если вы вставляете слайды напрямую в index.html, этот блок не нужен.
+    // Список файлов слайдов (добавь сюда все файлы, начиная с титульного)
     const slideFiles = [
-        "slides/01-problem.html","slides/02-hypothesis.html","slides/03-goals.html","slides/04-methodology.html",
-        "slides/05-results.html","slides/06-roi.html","slides/07-solutions.html","slides/08-trends.html",
-        "slides/09-checklist.html","slides/10-implementation.html","slides/11-risks.html","slides/12-nnov-context.html",
-        "slides/13-conclusion.html","slides/14-thanks.html"
+        "slides/00-cover.html",       // Титульный слайд
+        "slides/01-problem.html",
+        "slides/02-hypothesis.html",
+        "slides/03-goals.html",
+        "slides/04-methodology.html",
+        "slides/05-results.html",
+        "slides/06-roi.html",
+        "slides/07-solutions.html",
+        "slides/08-trends.html",
+        "slides/09-checklist.html",
+        "slides/10-implementation.html",
+        "slides/11-risks.html",
+        "slides/12-nnov-context.html",
+        "slides/13-conclusion.html",
+        "slides/14-thanks.html"
     ];
     document.addEventListener('DOMContentLoaded', async () => {
         const container = document.getElementById('slides-container');
@@ -69,7 +80,7 @@
                 const resp = await fetch(slideFiles[i]);
                 if (resp.ok) {
                     const html = await resp.text();
-                    // Создаём обёртку, чтобы slide селектор корректно работал
+                    // Обёртка для поиска section.slide
                     const tmp = document.createElement('div');
                     tmp.innerHTML = html;
                     const section = tmp.querySelector('section.slide');
@@ -82,10 +93,12 @@
                 console.error(`Ошибка загрузки слайда ${slideFiles[i]}:`, e);
             }
         }
-        // После загрузки слайдов, инициализируем интерактивы
+        // После загрузки — инициализируем все интерактивы
         if (window.initSlides) window.initSlides();
+        if (window.initCalculator) window.initCalculator();
+        if (window.initComparison) window.initComparison();
 
-        // Навигация по точкам
+        // Быстрая навигация по точкам
         const dots = document.querySelectorAll('.nav-dot');
         dots.forEach((dot, i) => {
             dot.addEventListener('click', () => {
