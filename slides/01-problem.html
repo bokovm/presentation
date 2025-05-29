@@ -1,35 +1,56 @@
-<section class="slide slide-problem">
-  <div class="slide-content">
-    <div class="problem-icons">
-      <div class="problem-icon shake" id="icon-time">
-        <img src="assets/icons/clock.png" alt="Время" />
-        <span></span>
-      </div>
-      <div class="problem-icon shake" id="icon-error">
-        <img src="assets/icons/error-cross.png" alt="Ошибка" />
-        <span></span>
-      </div>
-      <div class="problem-icon shake" id="icon-money">
-        <img src="assets/icons/loss.png" alt="Потери" />
-        <span></span>
-      </div>
+<section class="slide">
+    <div class="slide-content">
+        <h1 class="slide-title glow-text">Боль Малого Бизнеса</h1>
+        
+        <div class="grid-layout">
+            <div class="card animated scale-in" data-tilt style="--delay:1">
+                <div class="card-icon">
+                    <img src="assets/icons/clock.png" alt="Время">
+                </div>
+                <h2 class="card-title">Медленно</h2>
+                <p class="card-content">
+                    Обработка данных занимает 
+                    <span class="highlight">до 40 часов в месяц</span>, 
+                    отвлекая от развития бизнеса
+                </p>
+            </div>
+            
+            <div class="card animated scale-in" data-tilt style="--delay:2">
+                <div class="card-icon">
+                    <img src="assets/icons/warning.svg" alt="Ошибки">
+                </div>
+                <h2 class="card-title">Ошибочно</h2>
+                <p class="card-content">
+                    <span class="highlight">5+ ошибок</span> на отчетный период 
+                    ведут к штрафам и потерям
+                </p>
+            </div>
+            
+            <div class="card animated scale-in" data-tilt style="--delay:3">
+                <div class="card-icon">
+                    <img src="assets/icons/money.svg" alt="Затраты">
+                </div>
+                <h2 class="card-title">Дорого</h2>
+                <p class="card-content">
+                    <span class="highlight">30-40% бюджета</span> уходит 
+                    на рутинные операции и исправление ошибок
+                </p>
+            </div>
+        </div>
+        
+        <div class="stats-grid">
+            <div class="stat-item animated pulse" style="--delay:4">
+                <div class="stat-value">78%</div>
+                <div class="stat-label">компаний теряют время на рутину</div>
+            </div>
+            <div class="stat-item animated pulse" style="--delay:5">
+                <div class="stat-value">64%</div>
+                <div class="stat-label">получали штрафы из-за ошибок</div>
+            </div>
+            <div class="stat-item animated pulse" style="--delay:6">
+                <div class="stat-value">42ч</div>
+                <div class="stat-label">среднее время на отчетность в месяц</div>
+            </div>
+        </div>
     </div>
-    <div class="problem-thesis">
-      <h2>БОЛЬ МАЛОГО БИЗНЕСА</h2>
-      <ul>
-        <li><b>Ручной учет:</b> Медленно, Ошибочно, Дорого</li>
-        <li><b>Последствия:</b> Штрафы <span class="danger">❌</span>, Потери времени <span class="warn">⏳</span>, Финансовые риски <span class="loss">💸</span></li>
-      </ul>
-      <blockquote>
-        "Увеличение временных затрат и возможные финансовые потери"
-      </blockquote>
-    </div>
-    <div class="mini-graph">
-      <svg width="120" height="60">
-        <polyline points="10,20 40,40 70,50 110,55" fill="none" stroke="#F97316" stroke-width="4"/>
-        <polygon points="110,55 105,50 115,50" fill="#F97316"/>
-      </svg>
-      <span class="mini-graph-label">Падение эффективности</span>
-    </div>
-  </div>
 </section>

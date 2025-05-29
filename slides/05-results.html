@@ -1,39 +1,38 @@
-<section class="slide slide-results">
-  <div class="slide-content">
-    <h2>ЦИФРЫ ГОВОРЯТ САМИ ЗА СЕБЯ</h2>
-    <div class="results-indicators">
-      <div class="result-card fade-in-green">
-        <div class="result-icon">
-          <img src="assets/icons/time-down.png" alt="Время" />
+<section class="slide">
+    <div class="slide-content">
+        <h1 class="slide-title glow-text">Ключевые Результаты</h1>
+        <p class="slide-subtitle">Цифры говорят сами за себя</p>
+        
+        <div class="results-container">
+            <div class="results-chart animated fadeIn" style="--delay:1">
+                <canvas id="resultsChart" width="500" height="400"></canvas>
+            </div>
+            
+            <div class="results-stats">
+                <div class="result-stat animated scale-in" style="--delay:2">
+                    <h3 class="result-title">Снижение времени</h3>
+                    <div class="result-value">75%</div>
+                    <p class="result-description">Сокращение времени на формирование отчетности</p>
+                </div>
+                
+                <div class="result-stat animated scale-in" style="--delay:3">
+                    <h3 class="result-title">Уменьшение ошибок</h3>
+                    <div class="result-value">82%</div>
+                    <p class="result-description">Снижение количества ошибок в отчетности</p>
+                </div>
+                
+                <div class="result-stat animated scale-in" style="--delay:4">
+                    <h3 class="result-title">Экономия средств</h3>
+                    <div class="result-value">45%</div>
+                    <p class="result-description">Сокращение затрат на бухгалтерские услуги</p>
+                </div>
+                
+                <div class="result-stat animated scale-in" style="--delay:5">
+                    <h3 class="result-title">ROI</h3>
+                    <div class="result-value">252%</div>
+                    <p class="result-description">Возврат инвестиций за 6 месяцев</p>
+                </div>
+            </div>
         </div>
-        <div>
-          <span class="result-label">ВРЕМЯ на отчетность:</span>
-          <span class="result-value">3.2 ч/док → <b>0.8 ч/док</b> <span class="arrow-down">⬇️ 75%</span></span>
-        </div>
-      </div>
-      <div class="result-card fade-in-green">
-        <div class="result-icon">
-          <img src="assets/icons/error-down.png" alt="Ошибки" />
-        </div>
-        <div>
-          <span class="result-label">ОШИБКИ в отчетности:</span>
-          <span class="result-value">5 шт/период → <b>1 шт/период</b> <span class="arrow-down">⬇️ 80%</span></span>
-          <span class="result-comment">⬇️92% нарушений сроков</span>
-        </div>
-      </div>
-      <div class="result-card fade-in-green">
-        <div class="result-icon">
-          <img src="assets/icons/money-down.png" alt="Затраты" />
-        </div>
-        <div>
-          <span class="result-label">ЗАТРАТЫ на бухгалтерию:</span>
-          <span class="result-value">100% → <b>70%</b> <span class="arrow-down">⬇️ 30%</span></span>
-          <span class="result-comment">ООО: -45 000 руб./мес.</span>
-        </div>
-      </div>
     </div>
-    <div class="results-chart-anim">
-      <canvas id="beforeAfterChart" width="480" height="160"></canvas>
-    </div>
-  </div>
 </section>

@@ -1,57 +1,57 @@
-<section class="slide slide-solutions">
-  <div class="slide-content">
-    <h2>ТОП-3 РЕШЕНИЯ ДЛЯ РФ (2023)</h2>
-    <div class="software-tabs">
-      <div class="tab-headers">
-        <button class="tab-btn active" data-tab="1c">1С:Бухгалтерия 8</button>
-        <button class="tab-btn" data-tab="kontur">Контур.Бухгалтерия</button>
-        <button class="tab-btn" data-tab="moedelo">Моё Дело</button>
-      </div>
-      <div class="tab-content active" id="tab-1c">
-        <div class="sw-card">
-          <img src="assets/logos/1c.svg" alt="1С" />
-          <ul>
-            <li><b>Мощно, интеграция, локально</b></li>
-            <li>Для: Торговля, Производство</li>
-            <li>Цена: <b>от 5 000 руб./мес.</b></li>
-            <li>✔️ Поддержка налогов, склад</li>
-            <li>❌ Меньше облачных функций</li>
-          </ul>
-          <div class="case">Кейс: Строительная фирма –90% ошибок НДС</div>
+<section class="slide">
+    <div class="slide-content">
+        <h2 class="glow-text">ТОП-3 РЕШЕНИЯ ДЛЯ РФ (2023)</h2>
+        <div class="software-tabs">
+            <div class="tab-headers animated fadeIn" style="--delay:1">
+                <button class="tab-btn active" data-tab="1c">1С:Бухгалтерия 8</button>
+                <button class="tab-btn" data-tab="kontur">Контур.Бухгалтерия</button>
+                <button class="tab-btn" data-tab="moedelo">Моё Дело</button>
+            </div>
+            <div class="tab-content active" id="tab-1c">
+                <div class="sw-card animated scale-in" style="--delay:2">
+                    <img src="assets/logos/1c.svg" alt="1С" />
+                    <ul>
+                        <li><b>Мощно, интеграция, локально</b></li>
+                        <li>Для: Торговля, Производство</li>
+                        <li>Цена: <b>от 5 000 руб./мес.</b></li>
+                        <li>✔️ Поддержка налогов, склад</li>
+                        <li>❌ Меньше облачных функций</li>
+                    </ul>
+                    <div class="case">Кейс: Строительная фирма –90% ошибок НДС</div>
+                </div>
+            </div>
+            <div class="tab-content" id="tab-kontur">
+                <div class="sw-card animated scale-in" style="--delay:3">
+                    <img src="assets/logos/kontur.svg" alt="Контур" />
+                    <ul>
+                        <li><b>Облако, отчеты в ФНС, банки</b></li>
+                        <li>Для: Услуги, ИП/ООО (до 30 чел)</li>
+                        <li>Цена: <b>от 3 300 руб./мес.</b></li>
+                        <li>✔️ Мобильность, отчетность онлайн</li>
+                        <li>❌ Меньше возможностей для склада</li>
+                    </ul>
+                    <div class="case">Кейс: Кафе –15 часов/мес.</div>
+                </div>
+            </div>
+            <div class="tab-content" id="tab-moedelo">
+                <div class="sw-card animated scale-in" style="--delay:4">
+                    <img src="assets/logos/moedelo.svg" alt="Моё Дело" />
+                    <ul>
+                        <li><b>Супер-просто, дешево</b></li>
+                        <li>Для: ИП (УСН), фриланс</li>
+                        <li>Цена: <b>от 833 руб./мес.</b></li>
+                        <li>✔️ Мобильность, простота</li>
+                        <li>❌ Нет НДС</li>
+                    </ul>
+                    <div class="case">Кейс: ИП-репетитор –0 штрафов</div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="tab-content" id="tab-kontur">
-        <div class="sw-card">
-          <img src="assets/logos/kontur.svg" alt="Контур" />
-          <ul>
-            <li><b>Облако, отчеты в ФНС, банки</b></li>
-            <li>Для: Услуги, ИП/ООО (до 30 чел)</li>
-            <li>Цена: <b>от 3 300 руб./мес.</b></li>
-            <li>✔️ Мобильность, отчетность онлайн</li>
-            <li>❌ Меньше возможностей для склада</li>
-          </ul>
-          <div class="case">Кейс: Кафе –15 часов/мес.</div>
+        <div class="sw-filter animated fadeIn" style="--delay:5">
+            <label><input type="checkbox" id="filter-nds" /> Нужен НДС?</label>
+            <label><input type="checkbox" id="filter-warehouse" /> Нужен склад?</label>
+            <label><input type="checkbox" id="filter-mobile" /> Важна мобильность?</label>
+            <label><input type="checkbox" id="filter-budget" /> Бюджет до 3000р?</label>
         </div>
-      </div>
-      <div class="tab-content" id="tab-moedelo">
-        <div class="sw-card">
-          <img src="assets/logos/moedelo.svg" alt="Моё Дело" />
-          <ul>
-            <li><b>Супер-просто, дешево</b></li>
-            <li>Для: ИП (УСН), фриланс</li>
-            <li>Цена: <b>от 833 руб./мес.</b></li>
-            <li>✔️ Мобильность, простота</li>
-            <li>❌ Нет НДС</li>
-          </ul>
-          <div class="case">Кейс: ИП-репетитор –0 штрафов</div>
-        </div>
-      </div>
     </div>
-    <div class="sw-filter">
-      <label><input type="checkbox" id="filter-nds" /> Нужен НДС?</label>
-      <label><input type="checkbox" id="filter-warehouse" /> Нужен склад?</label>
-      <label><input type="checkbox" id="filter-mobile" /> Важна мобильность?</label>
-      <label><input type="checkbox" id="filter-budget" /> Бюджет до 3000р?</label>
-    </div>
-  </div>
 </section>

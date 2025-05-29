@@ -1,41 +1,41 @@
-<section class="slide slide-roi">
-  <div class="slide-content">
-    <h2>ROI АВТОМАТИЗАЦИИ</h2>
-    <div class="roi-main-indicator">
-      <img src="assets/icons/roi.png" alt="ROI" />
-      <b>ROI = 252% (для ООО)</b>
+<section class="slide">
+    <div class="slide-content">
+        <h2 class="glow-text">ROI АВТОМАТИЗАЦИИ</h2>
+        <div class="roi-main-indicator animated pulse" style="--delay:1">
+            <img src="assets/icons/roi.png" alt="ROI" />
+            <b>ROI = 252% (для ООО)</b>
+        </div>
+        <div class="roi-bars animated fadeIn" style="--delay:2">
+            <canvas id="roiBarChart" width="540" height="220"></canvas>
+        </div>
+        <div class="roi-info">
+            <ul>
+                <li class="animated fadeIn" style="--delay:3">ИП / «Моё Дело»: <b>2.3 мес.</b> – <span>216 тыс.р./год</span></li>
+                <li class="animated fadeIn" style="--delay:4">ООО (услуги) / «Контур»: <b>3–6 мес.</b> – <span>150–300 тыс.р./год</span></li>
+                <li class="animated fadeIn" style="--delay:5">ООО (торговля) / «1С»: <b>6.8 мес.</b> – <span>200–500 тыс.р./год</span></li>
+                <li class="animated fadeIn" style="--delay:6">⬇️100% штрафов у 95%, ⬇️15–28% потерь</li>
+            </ul>
+            <button class="btn-accent animated scale-in" id="openRoiCalc" style="--delay:7">Рассчитать свой ROI</button>
+        </div>
+        <!-- Модальное окно калькулятора ROI -->
+        <div class="modal" id="roiModal">
+            <div class="modal-content">
+                <span class="close" id="closeRoiModal">&times;</span>
+                <h3>Калькулятор ROI</h3>
+                <form id="roiForm">
+                    <label>Тип бизнеса:
+                        <select name="type">
+                            <option value="ip">ИП</option>
+                            <option value="ooo-uslugi">ООО (услуги)</option>
+                            <option value="ooo-torgovlya">ООО (торговля)</option>
+                        </select>
+                    </label>
+                    <label>Годовой оборот (₽): <input type="number" name="turnover" min="100000" required></label>
+                    <label>Затраты на бухг. в мес. (₽): <input type="number" name="cost" min="0" required></label>
+                    <button type="submit" class="btn-accent">Рассчитать</button>
+                </form>
+                <div id="roiResult"></div>
+            </div>
+        </div>
     </div>
-    <div class="roi-bars">
-      <canvas id="roiBarChart" width="540" height="220"></canvas>
-    </div>
-    <div class="roi-info">
-      <ul>
-        <li>ИП / «Моё Дело»: <b>2.3 мес.</b> – <span>216 тыс.р./год</span></li>
-        <li>ООО (услуги) / «Контур»: <b>3–6 мес.</b> – <span>150–300 тыс.р./год</span></li>
-        <li>ООО (торговля) / «1С»: <b>6.8 мес.</b> – <span>200–500 тыс.р./год</span></li>
-        <li>⬇️100% штрафов у 95%, ⬇️15–28% потерь</li>
-      </ul>
-      <button class="btn-accent" id="openRoiCalc">Рассчитать свой ROI</button>
-    </div>
-    <!-- Модальное окно калькулятора ROI -->
-    <div class="modal" id="roiModal">
-      <div class="modal-content">
-        <span class="close" id="closeRoiModal">&times;</span>
-        <h3>Калькулятор ROI</h3>
-        <form id="roiForm">
-          <label>Тип бизнеса:
-            <select name="type">
-              <option value="ip">ИП</option>
-              <option value="ooo-uslugi">ООО (услуги)</option>
-              <option value="ooo-torgovlya">ООО (торговля)</option>
-            </select>
-          </label>
-          <label>Годовой оборот (₽): <input type="number" name="turnover" min="100000" required></label>
-          <label>Затраты на бухг. в мес. (₽): <input type="number" name="cost" min="0" required></label>
-          <button type="submit" class="btn-accent">Рассчитать</button>
-        </form>
-        <div id="roiResult"></div>
-      </div>
-    </div>
-  </div>
 </section>

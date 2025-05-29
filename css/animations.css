@@ -1,108 +1,151 @@
-.fade-in {
-  opacity: 0;
-  transform: translateY(24px);
-  animation: fadeInUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-  animation-delay: calc(var(--effect-idx, 1) * 0.12s);
-}
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-.fade-in-green {
-  opacity: 0;
-  animation: fadeInGreen 0.7s forwards;
-}
-@keyframes fadeInGreen {
-  0% { opacity: 0; filter: grayscale(0.7); }
-  70% { opacity: 1; filter: drop-shadow(0 0 8px rgba(76,201,240,0.5)); }
-  100% { opacity: 1; filter: none; }
+/* animations.css */
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(30px) scale(0.95); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0) scale(1); 
+    }
 }
 
-.shake {
-  animation: shakeAnim 0.7s cubic-bezier(.36,.07,.19,.97) both;
-  animation-iteration-count: 2;
-}
-@keyframes shakeAnim {
-  10%, 90% { transform: translateX(-2px);}
-  20%, 80% { transform: translateX(4px);}
-  30%, 50%, 70% { transform: translateX(-7px);}
-  40%, 60% { transform: translateX(7px);}
-  100% { transform: none; }
-}
-
-.blink {
-  animation: blinkAnim 1.6s infinite;
-}
-@keyframes blinkAnim {
-  0%,100% { opacity: 1; }
-  45% { opacity: 0.1; }
-  50% { opacity: 1; }
+@keyframes float {
+    0% { 
+        transform: translateY(0px) rotate(0deg); 
+    }
+    50% { 
+        transform: translateY(-15px) rotate(3deg); 
+    }
+    100% { 
+        transform: translateY(0px) rotate(0deg); 
+    }
 }
 
-.floatable {
-  transition: transform 0.28s;
-}
-.floatable:hover {
-  transform: translateY(-8px) scale(1.07) rotate(-2deg);
-}
-
-@keyframes barGrow {
-  from { height: 0; }
-  to { height: var(--bar-height, 80px);}
-}
-
-.card-pop {
-  opacity: 0;
-  transform: scale(0.92) translateY(20px);
-  animation: cardPopAnim 0.44s forwards;
-}
-@keyframes cardPopAnim {
-  to {
-    opacity: 1;
-    transform: none;
-  }
+@keyframes pulse {
+    0% { 
+        transform: scale(1); 
+        box-shadow: 0 0 0 0 rgba(76, 201, 240, 0.6);
+    }
+    50% { 
+        transform: scale(1.08); 
+        box-shadow: 0 0 20px 10px rgba(76, 201, 240, 0);
+    }
+    100% { 
+        transform: scale(1); 
+        box-shadow: 0 0 0 0 rgba(76, 201, 240, 0);
+    }
 }
 
-@keyframes progressBarGrow {
-  from { width: 0; }
-  to { width: 100%; }
+@keyframes slideInLeft {
+    from { 
+        opacity: 0; 
+        transform: translateX(-80px) skewX(-5deg); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateX(0) skewX(0deg); 
+    }
 }
 
-.conclusion-anim-assemble {
-  animation: assembleIn 1.2s cubic-bezier(.22,1,.36,1.15) both;
-}
-@keyframes assembleIn {
-  0% { opacity: 0; transform: scale(0.8) rotate(-10deg);}
-  60% { opacity: 1; transform: scale(1.05) rotate(2deg);}
-  100% { opacity: 1; transform: none;}
-}
-
-.trend-icon.animated {
-  animation: trendPulse 2s infinite alternate;
-}
-@keyframes trendPulse {
-  0% { filter: brightness(1); transform: scale(1);}
-  100% { filter: brightness(1.2); transform: scale(1.08);}
+@keyframes slideInRight {
+    from { 
+        opacity: 0; 
+        transform: translateX(80px) skewX(5deg); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateX(0) skewX(0deg); 
+    }
 }
 
-@keyframes valueRise {
-  0% { 
-    transform: scale(0.8);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
+@keyframes highlightPulse {
+    0% { 
+        box-shadow: 0 0 0 0 rgba(247, 37, 133, 0.6); 
+        transform: scale(1);
+    }
+    70% { 
+        box-shadow: 0 0 0 20px rgba(247, 37, 133, 0); 
+        transform: scale(1.05);
+    }
+    100% { 
+        box-shadow: 0 0 0 0 rgba(247, 37, 133, 0); 
+        transform: scale(1);
+    }
 }
 
-.slide-cover {
-  animation: coverFadeIn 1.2s ease-out forwards;
+@keyframes scaleIn {
+    from { 
+        opacity: 0; 
+        transform: scale(0.8) rotate(-5deg); 
+    }
+    to { 
+        opacity: 1; 
+        transform: scale(1) rotate(0deg); 
+    }
 }
-@keyframes coverFadeIn {
-  0% { opacity: 0; transform: scale(0.95); }
-  100% { opacity: 1; transform: scale(1); }
+
+@keyframes glow {
+    0% { 
+        text-shadow: 0 0 5px rgba(76, 201, 240, 0.8); 
+    }
+    50% { 
+        text-shadow: 0 0 20px rgba(76, 201, 240, 1), 0 0 30px rgba(76, 201, 240, 0.8); 
+    }
+    100% { 
+        text-shadow: 0 0 5px rgba(76, 201, 240, 0.8); 
+    }
+}
+
+/* Анимации элементов */
+.animated {
+    animation: fadeIn 1.2s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+.float {
+    animation: float 5s ease-in-out infinite;
+}
+
+.pulse {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.slide-in-left {
+    animation: slideInLeft 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.slide-in-right {
+    animation: slideInRight 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.highlight-pulse {
+    animation: highlightPulse 2.5s ease infinite;
+}
+
+.scale-in {
+    animation: scaleIn 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.glow-text {
+    animation: glow 3s ease-in-out infinite;
+}
+
+/* Эффект параллакса для глубины */
+.parallax-item {
+    transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* Задержки для анимаций */
+[style*="--delay"] {
+    animation-delay: calc(var(--delay) * 0.3s);
+}
+
+/* Адаптивные анимации */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
 }
