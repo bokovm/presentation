@@ -1,50 +1,54 @@
 // main.js — Инициализация, переключение слайдов, базовые интерактивы
 
-document.addEventListener('DOMContentLoaded', () => {
-  // Навигация по слайдам
+// Теперь функции навигации доступны глобально
+window.showSlide = function(idx) {
   const slides = Array.from(document.querySelectorAll('.slide'));
-  let currentSlide = 0;
-
-  function showSlide(idx) {
-    slides.forEach((slide, i) => {
-      slide.style.display = (i === idx) ? 'flex' : 'none';
-    });
-    updateProgressBar(idx);
-    window.scrollTo(0, 0);
-  }
-
-  function nextSlide() {
-    if (currentSlide < slides.length - 1) {
-      currentSlide++;
-      showSlide(currentSlide);
-    }
-  }
-  function prevSlide() {
-    if (currentSlide > 0) {
-      currentSlide--;
-      showSlide(currentSlide);
-    }
-  }
-
-  function updateProgressBar(idx) {
-    const bar = document.querySelector('.progress-bar');
-    if (bar) {
-      bar.style.width = ((idx + 1) / slides.length * 100) + '%';
-    }
-  }
-
-  // Кнопки навигации
-  document.querySelectorAll('.nav-btn.next').forEach(btn => btn.addEventListener('click', nextSlide));
-  document.querySelectorAll('.nav-btn.prev').forEach(btn => btn.addEventListener('click', prevSlide));
-
-  // Клавиши ← →
-  document.addEventListener('keydown', e => {
-    if (e.key === 'ArrowRight') nextSlide();
-    if (e.key === 'ArrowLeft') prevSlide();
+  if (!slides.length) return;
+  slides.forEach((slide, i) => {
+    slide.style.display = (i === idx) ? 'flex' : 'none';
   });
+  window.currentSlide = idx;
+  updateProgressBar(idx, slides.length);
+  updateQuickNav(idx);
+  window.scrollTo(0, 0);
+};
+window.nextSlide = function() {
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  if (typeof window.currentSlide !== 'number') window.currentSlide = 0;
+  if (window.currentSlide < slides.length - 1) {
+    window.showSlide(window.currentSlide + 1);
+  }
+};
+window.prevSlide = function() {
+  if (typeof window.currentSlide !== 'number') window.currentSlide = 0;
+  if (window.currentSlide > 0) {
+    window.showSlide(window.currentSlide - 1);
+  }
+};
 
-  // Первоначальный показ
-  showSlide(currentSlide);
+function updateProgressBar(idx, total) {
+  const bar = document.querySelector('.progress-bar');
+  if (bar) {
+    bar.style.width = ((idx + 1) / total * 100) + '%';
+  }
+}
+function updateQuickNav(idx) {
+  const dots = document.querySelectorAll('.nav-dot');
+  dots.forEach((dot, i) => {
+    dot.classList.toggle('active', i === idx);
+  });
+}
+
+// Основная инициализация (вызывается после динамической загрузки слайдов)
+window.initSlides = function() {
+  // Показываем первый слайд
+  window.showSlide(0);
+
+  // Кнопки ← →
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowRight') window.nextSlide();
+    if (e.key === 'ArrowLeft') window.prevSlide();
+  });
 
   // Анимация появления для fade-in
   document.querySelectorAll('.fade-in').forEach((el, i) => {
@@ -80,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
-  // Показываем первый этап по умолчанию
+  // Показываем первый этап по умолчанию (если есть)
   let firstStep = document.querySelector('.timeline-step[data-step="1"]');
   if (firstStep) firstStep.click();
 
@@ -112,4 +116,4 @@ document.addEventListener('DOMContentLoaded', () => {
   if (thanksContacts) {
     setTimeout(() => thanksContacts.classList.add('fade-in'), 400);
   }
-});
+};

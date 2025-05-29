@@ -45,14 +45,13 @@
     <!-- Слайды презентации -->
     <div class="slides-container" id="slides-container">
         <!-- Слайды будут загружаться динамически или включаться как <section class="slide">...</section> -->
-        <!-- Если вы включаете все слайды статически, просто разместите их тут. -->
     </div>
 
     <!-- Подключаем скрипты -->
     <script src="js/navigation.js"></script>
-    <script src="js/main.js"></script>
     <script src="js/calculator.js"></script>
     <script src="js/comparison.js"></script>
+    <script src="js/main.js"></script>
     <script>
     // Динамическая загрузка слайдов (если используется файловая структура slides/*.html)
     // Если вы вставляете слайды напрямую в index.html, этот блок не нужен.
@@ -83,24 +82,22 @@
                 console.error(`Ошибка загрузки слайда ${slideFiles[i]}:`, e);
             }
         }
-        // После загрузки слайдов, показываем первый слайд через main.js
-        if (typeof window.showSlide === 'function') window.showSlide(0);
+        // После загрузки слайдов, инициализируем интерактивы
+        if (window.initSlides) window.initSlides();
 
         // Навигация по точкам
         const dots = document.querySelectorAll('.nav-dot');
         dots.forEach((dot, i) => {
             dot.addEventListener('click', () => {
-                if (typeof window.showSlide === 'function') window.showSlide(i);
-                dots.forEach(d => d.classList.remove('active'));
-                dot.classList.add('active');
+                if (window.showSlide) window.showSlide(i);
             });
         });
         // Кнопки назад/вперёд
         document.getElementById('prev-btn').addEventListener('click', () => {
-            if (typeof window.prevSlide === 'function') window.prevSlide();
+            if (window.prevSlide) window.prevSlide();
         });
         document.getElementById('next-btn').addEventListener('click', () => {
-            if (typeof window.nextSlide === 'function') window.nextSlide();
+            if (window.nextSlide) window.nextSlide();
         });
     });
     </script>
