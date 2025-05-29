@@ -1,7 +1,7 @@
 .fade-in {
   opacity: 0;
   transform: translateY(24px);
-  animation: fadeInUp 0.6s forwards;
+  animation: fadeInUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
   animation-delay: calc(var(--effect-idx, 1) * 0.12s);
 }
 @keyframes fadeInUp {
@@ -17,7 +17,7 @@
 }
 @keyframes fadeInGreen {
   0% { opacity: 0; filter: grayscale(0.7); }
-  70% { opacity: 1; filter: drop-shadow(0 0 8px #10B98155); }
+  70% { opacity: 1; filter: drop-shadow(0 0 8px rgba(76,201,240,0.5)); }
   100% { opacity: 1; filter: none; }
 }
 
@@ -86,4 +86,23 @@
 @keyframes trendPulse {
   0% { filter: brightness(1); transform: scale(1);}
   100% { filter: brightness(1.2); transform: scale(1.08);}
+}
+
+@keyframes valueRise {
+  0% { 
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.slide-cover {
+  animation: coverFadeIn 1.2s ease-out forwards;
+}
+@keyframes coverFadeIn {
+  0% { opacity: 0; transform: scale(0.95); }
+  100% { opacity: 1; transform: scale(1); }
 }
