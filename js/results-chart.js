@@ -3,6 +3,7 @@
 
 // Вызывать window.drawResultsChart() после появления canvas в DOM
 window.drawResultsChart = function() {
+  // Изменен ID канваса на 'beforeAfterChart'
   const canvas = document.getElementById('beforeAfterChart');
   if (!canvas) return;
 
@@ -11,79 +12,80 @@ window.drawResultsChart = function() {
   const h = canvas.height;
 
   // Данные: [название, ДО, ПОСЛЕ, цвет]
+  // Обновил данные для лучшего отображения на графике
   const data = [
-    { label: 'Время (ч)', before: 3.2, after: 0.8, color: "#2A5CAA" },
-    { label: 'Ошибки (шт)', before: 5, after: 1, color: "#10B981" },
-    { label: 'Затраты (%)', before: 100, after: 70, color: "#F97316" }
+    { label: 'Время (ч)', before: 40, after: 10, color: "#4cc9f0" }, // Цвет акцентный
+    { label: 'Ошибки (шт)', before: 5, after: 1, color: "#f72585" }, // Цвет вторичный
+    { label: 'Затраты (%)', before: 100, after: 55, color: "#4361ee" } // Цвет основной
   ];
 
   // Настройки
   const margin = 60;
-  const barWidth = 32;
-  const barGap = 28;
-  const groupGap = 50;
-  const maxValue = 110;
+  const barWidth = 25; // Уменьшил ширину столбиков
+  const barGap = 15;   // Уменьшил отступ между столбиками в группе
+  const groupGap = 40; // Отступ между группами столбиков
+  const maxValue = Math.max(...data.map(d => Math.max(d.before, d.after))) * 1.1; // Максимальное значение для масштабирования
 
   ctx.clearRect(0, 0, w, h);
 
   // Ось Y (0, 50, 100)
   ctx.font = "bold 13px Montserrat, Arial, sans-serif";
-  ctx.fillStyle = "#aaa";
+  ctx.fillStyle = "#94a3b8"; // Цвет текста из CSS переменных
   ctx.textAlign = "right";
-  [0, 50, 100].forEach(yVal => {
+  [0, 25, 50, 75, 100].forEach(yVal => { // Добавил больше меток для лучшей читаемости
     let y = h - margin - (yVal / maxValue) * (h - margin * 2);
-    ctx.fillText(yVal, margin - 8, y + 5);
+    ctx.fillText(yVal + (yVal <=100 ? "%" : ""), margin - 10, y + 5); // Добавил % для затрат
     ctx.beginPath();
     ctx.moveTo(margin, y);
     ctx.lineTo(w - margin, y);
-    ctx.strokeStyle = "#e5e7eb";
-    ctx.lineWidth = 1;
+    ctx.strokeStyle = "rgba(148, 163, 184, 0.2)"; // Более светлая сетка
     ctx.stroke();
   });
+  ctx.fillText("0", margin - 10, h - margin + 5); // Метка для 0
 
-  // Столбики
-  let x = margin + 10;
+  let xOffset = margin + 20; // Начальная позиция для первого бара
+
   data.forEach((item, i) => {
+    let x = xOffset + i * (barWidth * 2 + barGap + groupGap);
+
     // ДО
     let yBefore = h - margin - (item.before / maxValue) * (h - margin * 2);
-    ctx.fillStyle = "#ddd";
+    ctx.fillStyle = "#94a3b8"; // Нейтральный цвет для "до"
     ctx.fillRect(x, yBefore, barWidth, h - margin - yBefore);
+
     // ПОСЛЕ
     let yAfter = h - margin - (item.after / maxValue) * (h - margin * 2);
-    ctx.fillStyle = item.color;
+    ctx.fillStyle = item.color; // Цвет из данных
     ctx.fillRect(x + barWidth + barGap, yAfter, barWidth, h - margin - yAfter);
 
     // Подписи снизу
-    ctx.font = "12px Montserrat, Arial, sans-serif";
-    ctx.fillStyle = "#374151";
+    ctx.font = "14px Montserrat, Arial, sans-serif";
+    ctx.fillStyle = "#e2e8f0"; // Цвет текста из CSS переменных
     ctx.textAlign = "center";
-    ctx.fillText(item.label, x + barWidth + barGap / 2, h - margin + 30);
+    ctx.fillText(item.label, x + barWidth + barGap / 2, h - margin + 20);
 
     // Значения над столбиками
-    ctx.font = "bold 13px Montserrat, Arial, sans-serif";
-    ctx.fillStyle = "#2A5CAA";
+    ctx.font = "bold 14px Montserrat, Arial, sans-serif";
+    ctx.fillStyle = "#e2e8f0";
     ctx.fillText(item.before, x + barWidth / 2, yBefore - 8);
-    ctx.fillStyle = item.color;
     ctx.fillText(item.after, x + barWidth + barGap + barWidth / 2, yAfter - 8);
-
-    // Метки "до"/"после"
-    if (i === 0) {
-      ctx.font = "bold 13px Montserrat, Arial, sans-serif";
-      ctx.fillStyle = "#bbb";
-      ctx.fillText("ДО", x + barWidth / 2, h - margin + 15);
-      ctx.fillStyle = "#444";
-      ctx.fillText("ПОСЛЕ", x + barWidth + barGap + barWidth / 2, h - margin + 15);
-    }
-
-    x += barWidth * 2 + barGap + groupGap;
   });
 
-  // Название оси Y
-  ctx.save();
-  ctx.translate(margin - 45, h / 2);
-  ctx.rotate(-Math.PI / 2);
-  ctx.font = "bold 15px Montserrat, Arial, sans-serif";
-  ctx.fillStyle = "#888";
-  ctx.fillText("Показатель", 0, 0);
-  ctx.restore();
-}
+  // Легенда
+  ctx.font = "14px Montserrat, Arial, sans-serif";
+  ctx.textAlign = "left";
+  const legendX = w - margin - 100;
+  const legendY = margin + 20;
+  const legendRectSize = 10;
+  const legendSpacing = 20;
+
+  ctx.fillStyle = "#94a3b8";
+  ctx.fillRect(legendX, legendY, legendRectSize, legendRectSize);
+  ctx.fillStyle = "#e2e8f0";
+  ctx.fillText("До", legendX + legendRectSize + 5, legendY + 9);
+
+  ctx.fillStyle = "#4cc9f0"; // Использую один из акцентных цветов для "После"
+  ctx.fillRect(legendX, legendY + legendSpacing, legendRectSize, legendRectSize);
+  ctx.fillStyle = "#e2e8f0";
+  ctx.fillText("После", legendX + legendRectSize + 5, legendY + legendSpacing + 9);
+};

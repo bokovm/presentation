@@ -1,23 +1,22 @@
 <section class="slide">
     <div class="slide-content">
-        <h2 class="glow-text">ROI АВТОМАТИЗАЦИИ</h2>
-        <div class="roi-main-indicator animated pulse" style="--delay:1">
+        <h2 class="slide-title">ROI АВТОМАТИЗАЦИИ</h2>
+        <div class="roi-main-indicator">
             <img src="assets/icons/roi.png" alt="ROI" />
             <b>ROI = 252% (для ООО)</b>
         </div>
-        <div class="roi-bars animated fadeIn" style="--delay:2">
+        <div class="roi-bars">
             <canvas id="roiBarChart" width="540" height="220"></canvas>
         </div>
         <div class="roi-info">
             <ul>
-                <li class="animated fadeIn" style="--delay:3">ИП / «Моё Дело»: <b>2.3 мес.</b> – <span>216 тыс.р./год</span></li>
-                <li class="animated fadeIn" style="--delay:4">ООО (услуги) / «Контур»: <b>3–6 мес.</b> – <span>150–300 тыс.р./год</span></li>
-                <li class="animated fadeIn" style="--delay:5">ООО (торговля) / «1С»: <b>6.8 мес.</b> – <span>200–500 тыс.р./год</span></li>
-                <li class="animated fadeIn" style="--delay:6">⬇️100% штрафов у 95%, ⬇️15–28% потерь</li>
+                <li>ИП / «Моё Дело»: <b>2.3 мес.</b> – <span>216 тыс.р./год</span></li>
+                <li>ООО (услуги) / «Контур»: <b>3–6 мес.</b> – <span>150–300 тыс.р./год</span></li>
+                <li>ООО (торговля) / «1С»: <b>6.8 мес.</b> – <span>200–500 тыс.р./год</span></li>
+                <li>⬇️100% штрафов у 95%, ⬇️15–28% потерь</li>
             </ul>
-            <button class="btn-accent animated scale-in" id="openRoiCalc" style="--delay:7">Рассчитать свой ROI</button>
+            <button class="btn-accent" id="openRoiCalc">Рассчитать свой ROI</button>
         </div>
-        <!-- Модальное окно калькулятора ROI -->
         <div class="modal" id="roiModal">
             <div class="modal-content">
                 <span class="close" id="closeRoiModal">&times;</span>

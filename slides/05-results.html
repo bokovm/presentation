@@ -1,33 +1,29 @@
 <section class="slide">
     <div class="slide-content">
-        <h1 class="slide-title glow-text">Ключевые Результаты</h1>
+        <h1 class="slide-title">Ключевые Результаты</h1>
         <p class="slide-subtitle">Цифры говорят сами за себя</p>
-        
-        <div class="results-container">
-            <div class="results-chart animated fadeIn" style="--delay:1">
-                <canvas id="resultsChart" width="500" height="400"></canvas>
+        <div class="results-layout">
+            <div class="results-chart-container">
+                <!-- Изменил ID канваса, чтобы не конфликтовать с Chart.js и использовать свой кастомный график -->
+                <canvas id="beforeAfterChart" width="450" height="300"></canvas>
             </div>
-            
-            <div class="results-stats">
-                <div class="result-stat animated scale-in" style="--delay:2">
+            <div class="results-stats-grid">
+                <div class="result-stat-item">
                     <h3 class="result-title">Снижение времени</h3>
                     <div class="result-value">75%</div>
                     <p class="result-description">Сокращение времени на формирование отчетности</p>
                 </div>
-                
-                <div class="result-stat animated scale-in" style="--delay:3">
+                <div class="result-stat-item">
                     <h3 class="result-title">Уменьшение ошибок</h3>
                     <div class="result-value">82%</div>
                     <p class="result-description">Снижение количества ошибок в отчетности</p>
                 </div>
-                
-                <div class="result-stat animated scale-in" style="--delay:4">
+                <div class="result-stat-item">
                     <h3 class="result-title">Экономия средств</h3>
                     <div class="result-value">45%</div>
                     <p class="result-description">Сокращение затрат на бухгалтерские услуги</p>
                 </div>
-                
-                <div class="result-stat animated scale-in" style="--delay:5">
+                <div class="result-stat-item">
                     <h3 class="result-title">ROI</h3>
                     <div class="result-value">252%</div>
                     <p class="result-description">Возврат инвестиций за 6 месяцев</p>

@@ -1,181 +1,24 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Автоматизация бухучета | Исследование</title>
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/animations.css">
-    <link rel="stylesheet" href="css/slides.css">
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.0/dist/vanilla-tilt.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <style>
-        /* Дополнительные стили для слайда гипотезы */
-        .slide-hypothesis .central-icon {
-            text-align: center;
-            margin: 0 auto 30px;
-            width: 120px;
-            height: 120px;
-            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: var(--shadow);
-        }
-        
-        .slide-hypothesis .central-icon img {
-            width: 60px;
-            height: 60px;
-            object-fit: contain;
-        }
-        
-        .slide-hypothesis .slide-title {
-            text-align: center;
-            margin-bottom: 40px;
-            font-size: 2.5rem;
-        }
-        
-        .effects-4 {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .effect-block {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            background: rgba(30, 41, 59, 0.6);
-            border-radius: var(--border-radius);
-            padding: 20px;
-            border: 1px solid rgba(71, 85, 105, 0.3);
-            box-shadow: var(--shadow);
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeIn 0.8s ease-out forwards;
-            animation-delay: calc(var(--effect-idx) * 0.2s);
-        }
-        
-        .effect-block img {
-            width: 50px;
-            height: 50px;
-            object-fit: contain;
-        }
-        
-        .effect-block div {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .effect-block b {
-            font-family: var(--font-title);
-            font-size: 1.3rem;
-            margin-bottom: 5px;
-        }
-        
-        .hypothesis-thesis {
-            text-align: center;
-            margin-top: 40px;
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: var(--color-accent);
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 20px;
-            background: rgba(30, 41, 59, 0.4);
-            border-radius: var(--border-radius);
-            border: 1px solid var(--color-accent);
-        }
-        
-        /* Адаптация для слайда гипотезы */
-        @media (max-width: 992px) {
-            .slide-hypothesis .slide-title {
-                font-size: 2rem;
-            }
-            
-            .effect-block b {
-                font-size: 1.1rem;
-            }
-            
-            .hypothesis-thesis {
-                font-size: 1.1rem;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .effects-4 {
-                grid-template-columns: 1fr;
-                max-width: 500px;
-            }
-            
-            .slide-hypothesis .central-icon {
-                width: 100px;
-                height: 100px;
-            }
-            
-            .slide-hypothesis .central-icon img {
-                width: 50px;
-                height: 50px;
-            }
-            
-            .slide-hypothesis .slide-title {
-                font-size: 1.8rem;
-                margin-bottom: 30px;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .effect-block {
-                padding: 15px;
-                gap: 15px;
-            }
-            
-            .effect-block img {
-                width: 40px;
-                height: 40px;
-            }
-            
-            .hypothesis-thesis {
-                font-size: 1rem;
-                padding: 15px;
-            }
-        }
-    </style>
 </head>
 <body>
-    <div id="particles-bg"></div>
-    
     <div class="progress-container">
         <div class="progress-bar" id="progress-bar"></div>
     </div>
     
-    <div class="navigation">
-        <button class="nav-btn prev" id="prev-btn">
-            <svg width="28" height="28" viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" fill="currentColor"/></svg>
-        </button>
-        
-        <div class="slide-counter">
-            <span id="current-slide">1</span>/<span id="total-slides">15</span>
-        </div>
-        
-        <button class="nav-btn next" id="next-btn">
-            <svg width="28" height="28" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" fill="currentColor"/></svg>
-        </button>
-    </div>
+    <!-- Навигационные кнопки удалены. Переключение только по стрелкам клавиатуры. -->
+    <!-- Счетчик слайдов также удален, так как он был частью навигации. -->
 
     <div class="slides-container" id="slides-container">
-        <!-- Слайды будут загружены динамически -->
     </div>
 
-    <script src="js/particles-config.js"></script>
     <script src="js/chart-config.js"></script>
     <script src="js/roi-chart.js"></script>
     <script src="js/results-chart.js"></script>
@@ -184,10 +27,6 @@
     <script src="js/navigation.js"></script>
     <script src="js/main.js"></script>
     <script>
-        // Инициализация particles.js
-        particlesJS('particles-bg', particlesConfig);
-        
-        // Инициализация слайдов
         document.addEventListener('DOMContentLoaded', async () => {
             const container = document.getElementById('slides-container');
             const slideFiles = [

@@ -4,9 +4,9 @@ window.initPresentation = function() {
     // Показываем первый слайд
     showSlide(0);
     
-    // Навигация
-    document.getElementById('prev-btn').addEventListener('click', prevSlide);
-    document.getElementById('next-btn').addEventListener('click', nextSlide);
+    // Удалена привязка кнопок навигации, оставлена только клавиатурная навигация
+    // document.getElementById('prev-btn').addEventListener('click', prevSlide);
+    // document.getElementById('next-btn').addEventListener('click', nextSlide);
     
     // Клавиатурная навигация
     document.addEventListener('keydown', (e) => {
@@ -17,17 +17,6 @@ window.initPresentation = function() {
     
     // Инициализация компонентов
     setTimeout(() => {
-        const cards = document.querySelectorAll('.card');
-        cards.forEach(card => {
-            VanillaTilt.init(card, {
-                max: 8,
-                speed: 300,
-                glare: true,
-                'max-glare': 0.2,
-                gyroscope: true
-            });
-        });
-        
         // Инициализация графиков
         if (typeof initCharts === 'function') initCharts();
         if (typeof initComparison === 'function') initComparison();
@@ -42,18 +31,16 @@ function showSlide(index) {
     
     // Скрыть все слайды
     slides.forEach(slide => {
-        slide.style.display = 'none';
         slide.classList.remove('active');
     });
     
     // Показать текущий слайд
     if (index >= 0 && index < totalSlides) {
-        slides[index].style.display = 'flex';
         slides[index].classList.add('active');
         
-        // Обновляем счетчик
-        document.getElementById('current-slide').textContent = index + 1;
-        document.getElementById('total-slides').textContent = totalSlides;
+        // Обновление счетчика удалено, так как счетчик удален из HTML
+        // document.getElementById('current-slide').textContent = index + 1;
+        // document.getElementById('total-slides').textContent = totalSlides;
         
         // Обновляем прогресс-бар
         const progress = ((index + 1) / totalSlides) * 100;
@@ -72,7 +59,10 @@ function nextSlide() {
     const slides = document.querySelectorAll('.slide');
     const currentIndex = Array.from(slides).findIndex(slide => 
         slide.classList.contains('active'));
-    const nextIndex = (currentIndex + 1) % slides.length;
+    let nextIndex = currentIndex + 1;
+    if (nextIndex >= slides.length) {
+        nextIndex = 0; // или оставить на последнем: nextIndex = slides.length - 1;
+    }
     showSlide(nextIndex);
 }
 
@@ -81,6 +71,9 @@ function prevSlide() {
     const slides = document.querySelectorAll('.slide');
     const currentIndex = Array.from(slides).findIndex(slide => 
         slide.classList.contains('active'));
-    const prevIndex = (currentIndex - 1 + slides.length) % slides.length;
+    let prevIndex = currentIndex - 1;
+    if (prevIndex < 0) {
+        prevIndex = slides.length - 1; // или оставить на первом: prevIndex = 0;
+    }
     showSlide(prevIndex);
 }
