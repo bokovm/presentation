@@ -1,32 +1,39 @@
 <section class="slide">
     <div class="slide-content">
-        <h1 class="slide-title">Ключевые Результаты</h1>
-        <p class="slide-subtitle">Цифры говорят сами за себя</p>
-        <div class="results-layout">
-            <div class="results-chart-container">
-                <!-- Изменил ID канваса, чтобы не конфликтовать с Chart.js и использовать свой кастомный график -->
-                <canvas id="beforeAfterChart" width="450" height="300"></canvas>
+        <h1 class="slide-title">Ключевые результаты</h1>
+        <p class="slide-subtitle">Эффективность автоматизации бухгалтерского учета</p>
+        
+        <div class="grid-2col" style="margin-top: 20px">
+            <div style="background: var(--color-surface); border-radius: var(--border-radius); padding: 25px; box-shadow: var(--shadow);">
+                <h3 style="text-align: center; margin-bottom: 20px; color: var(--color-primary);">Показатели эффективности</h3>
+                <canvas id="resultsChart" height="250"></canvas>
             </div>
-            <div class="results-stats-grid">
-                <div class="result-stat-item">
-                    <h3 class="result-title">Снижение времени</h3>
-                    <div class="result-value">75%</div>
-                    <p class="result-description">Сокращение времени на формирование отчетности</p>
-                </div>
-                <div class="result-stat-item">
-                    <h3 class="result-title">Уменьшение ошибок</h3>
-                    <div class="result-value">82%</div>
-                    <p class="result-description">Снижение количества ошибок в отчетности</p>
-                </div>
-                <div class="result-stat-item">
-                    <h3 class="result-title">Экономия средств</h3>
-                    <div class="result-value">45%</div>
-                    <p class="result-description">Сокращение затрат на бухгалтерские услуги</p>
-                </div>
-                <div class="result-stat-item">
-                    <h3 class="result-title">ROI</h3>
-                    <div class="result-value">252%</div>
-                    <p class="result-description">Возврат инвестиций за 6 месяцев</p>
+            
+            <div>
+                <div class="grid-2col" style="height: 100%">
+                    <div class="stat-card" style="background: #e6f4ea">
+                        <div class="stat-value">75%</div>
+                        <div class="stat-label">Снижение времени</div>
+                        <p style="margin-top: 10px">На формирование отчетности</p>
+                    </div>
+                    
+                    <div class="stat-card" style="background: #f0f7ff">
+                        <div class="stat-value">82%</div>
+                        <div class="stat-label">Уменьшение ошибок</div>
+                        <p style="margin-top: 10px">В финансовой отчетности</p>
+                    </div>
+                    
+                    <div class="stat-card" style="background: #fef6e6">
+                        <div class="stat-value">45%</div>
+                        <div class="stat-label">Экономия средств</div>
+                        <p style="margin-top: 10px">На бухгалтерские услуги</p>
+                    </div>
+                    
+                    <div class="stat-card" style="background: #fae6e6">
+                        <div class="stat-value">252%</div>
+                        <div class="stat-label">ROI</div>
+                        <p style="margin-top: 10px">Возврат инвестиций за 6 мес.</p>
+                    </div>
                 </div>
             </div>
         </div>

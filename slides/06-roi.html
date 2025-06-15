@@ -1,40 +1,69 @@
 <section class="slide">
     <div class="slide-content">
-        <h2 class="slide-title">ROI АВТОМАТИЗАЦИИ</h2>
-        <div class="roi-main-indicator">
-            <img src="assets/icons/roi.png" alt="ROI" />
-            <b>ROI = 252% (для ООО)</b>
-        </div>
-        <div class="roi-bars">
-            <canvas id="roiBarChart" width="540" height="220"></canvas>
-        </div>
-        <div class="roi-info">
-            <ul>
-                <li>ИП / «Моё Дело»: <b>2.3 мес.</b> – <span>216 тыс.р./год</span></li>
-                <li>ООО (услуги) / «Контур»: <b>3–6 мес.</b> – <span>150–300 тыс.р./год</span></li>
-                <li>ООО (торговля) / «1С»: <b>6.8 мес.</b> – <span>200–500 тыс.р./год</span></li>
-                <li>⬇️100% штрафов у 95%, ⬇️15–28% потерь</li>
-            </ul>
-            <button class="btn-accent" id="openRoiCalc">Рассчитать свой ROI</button>
-        </div>
-        <div class="modal" id="roiModal">
-            <div class="modal-content">
-                <span class="close" id="closeRoiModal">&times;</span>
-                <h3>Калькулятор ROI</h3>
-                <form id="roiForm">
-                    <label>Тип бизнеса:
-                        <select name="type">
-                            <option value="ip">ИП</option>
-                            <option value="ooo-uslugi">ООО (услуги)</option>
-                            <option value="ooo-torgovlya">ООО (торговля)</option>
-                        </select>
-                    </label>
-                    <label>Годовой оборот (₽): <input type="number" name="turnover" min="100000" required></label>
-                    <label>Затраты на бухг. в мес. (₽): <input type="number" name="cost" min="0" required></label>
-                    <button type="submit" class="btn-accent">Рассчитать</button>
-                </form>
-                <div id="roiResult"></div>
+        <h1 class="slide-title">Экономическая эффективность</h1>
+        <p class="slide-subtitle">Расчет возврата инвестиций (ROI)</p>
+        
+        <div style="margin-top: 30px; text-align: center; background: var(--color-surface); padding: 25px; border-radius: var(--border-radius); box-shadow: var(--shadow);">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 30px">
+                <img src="assets/icons/roi.png" alt="ROI" width="60">
+                <div>
+                    <h3 style="font-size: 1.8rem; color: var(--color-secondary); margin-bottom: 5px">Средний ROI = 252%</h3>
+                    <p>Для организаций (ООО) при внедрении автоматизации</p>
+                </div>
             </div>
+            
+            <div class="grid-3col" style="margin-top: 25px">
+                <div>
+                    <div class="stat-value">2.3 мес.</div>
+                    <div class="stat-label">ИП / «Моё Дело»</div>
+                    <p style="margin-top: 10px">216 тыс.р./год</p>
+                </div>
+                
+                <div>
+                    <div class="stat-value">3-6 мес.</div>
+                    <div class="stat-label">ООО (услуги) / «Контур»</div>
+                    <p style="margin-top: 10px">150-300 тыс.р./год</p>
+                </div>
+                
+                <div>
+                    <div class="stat-value">6.8 мес.</div>
+                    <div class="stat-label">ООО (торговля) / «1С»</div>
+                    <p style="margin-top: 10px">200-500 тыс.р./год</p>
+                </div>
+            </div>
+            
+            <div style="margin-top: 30px">
+                <button class="btn-accent" id="openRoiCalc" style="background: var(--color-secondary); border: none; padding: 12px 30px; border-radius: 6px; color: white; font-size: 1.1rem; cursor: pointer;">
+                    Рассчитать свой ROI
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Модальное окно для ROI калькулятора -->
+    <div id="roiModal" class="modal">
+        <div class="modal-content">
+            <span id="closeRoiModal">&times;</span>
+            <h3 style="color: var(--color-primary); margin-bottom: 20px">Калькулятор ROI</h3>
+            
+            <form id="roiForm">
+                <label for="type">Тип бизнеса:</label>
+                <select id="type" name="type" required>
+                    <option value="ip">ИП / Моё Дело</option>
+                    <option value="ooo-uslugi">ООО (услуги) / Контур</option>
+                    <option value="ooo-torgovlya">ООО (торговля) / 1С</option>
+                </select>
+                
+                <label for="turnover">Годовой оборот (руб):</label>
+                <input type="number" id="turnover" name="turnover" placeholder="Введите сумму" required>
+                
+                <label for="cost">Стоимость ПО в год (руб):</label>
+                <input type="number" id="cost" name="cost" placeholder="Введите сумму" required>
+                
+                <button type="submit" class="btn-accent" style="margin-top: 20px">Рассчитать</button>
+            </form>
+            
+            <div id="roiResult" style="margin-top: 20px; font-size: 1.1rem; line-height: 1.6"></div>
         </div>
     </div>
 </section>

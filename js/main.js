@@ -4,10 +4,6 @@ window.initPresentation = function() {
     // Показываем первый слайд
     showSlide(0);
     
-    // Удалена привязка кнопок навигации, оставлена только клавиатурная навигация
-    // document.getElementById('prev-btn').addEventListener('click', prevSlide);
-    // document.getElementById('next-btn').addEventListener('click', nextSlide);
-    
     // Клавиатурная навигация
     document.addEventListener('keydown', (e) => {
         if (e.key === 'ArrowLeft') prevSlide();
@@ -38,10 +34,6 @@ function showSlide(index) {
     if (index >= 0 && index < totalSlides) {
         slides[index].classList.add('active');
         
-        // Обновление счетчика удалено, так как счетчик удален из HTML
-        // document.getElementById('current-slide').textContent = index + 1;
-        // document.getElementById('total-slides').textContent = totalSlides;
-        
         // Обновляем прогресс-бар
         const progress = ((index + 1) / totalSlides) * 100;
         document.getElementById('progress-bar').style.width = `${progress}%`;
@@ -61,7 +53,7 @@ function nextSlide() {
         slide.classList.contains('active'));
     let nextIndex = currentIndex + 1;
     if (nextIndex >= slides.length) {
-        nextIndex = 0; // или оставить на последнем: nextIndex = slides.length - 1;
+        nextIndex = 0;
     }
     showSlide(nextIndex);
 }
@@ -73,7 +65,7 @@ function prevSlide() {
         slide.classList.contains('active'));
     let prevIndex = currentIndex - 1;
     if (prevIndex < 0) {
-        prevIndex = slides.length - 1; // или оставить на первом: prevIndex = 0;
+        prevIndex = slides.length - 1;
     }
     showSlide(prevIndex);
 }
